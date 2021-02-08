@@ -8,6 +8,9 @@ const HomeController = {
   about(request, response) {
     return response.render('public/about');
   },
+  chefs(request, response) {
+    return response.render('public/chefs');
+  },
 }
 
 module.exports = HomeController;

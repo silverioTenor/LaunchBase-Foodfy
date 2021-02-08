@@ -1,0 +1,33 @@
+.chefs {
+  gap: 50px;
+}
+
+.chef {
+  display: flex;
+  align-items: center;
+}
+
+.chef img {
+  width: 64px;
+  height: 64px;
+  margin-right: 20px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.chef-content {
+  width: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.chef-content strong {
+  font-size: 18px;
+}
+
+.chef-content span {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #666;
+}
