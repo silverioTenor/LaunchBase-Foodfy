@@ -1,0 +1,37 @@
+{% include '../parts/header.njk' %}
+
+{% block title %}
+  {% block subTitle %}{% endblock subTitle %}
+{% endblock title %}
+
+<div class="container-global">
+  <div class="container-global-into">
+    <header class="header-navigation">
+      <a href="/" class="logoImg">
+        <img src="/img/system/logo_black.png" alt="logo"/>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="/recipes">Home</a>
+        <a href="/recipes">Sobre</a>
+        <a href="/recipes">Receitas</a>
+        <a href="/recipes">Chefs</a>
+      </nav>
+
+      {% block filter %}{% endblock filter %}
+    </header>
+
+    {% block content %}{% endblock content %}
+
+  </div>
+
+  {% block footer %}
+    {% block subFooter %}
+      <footer>
+        <p>Copyright&copy;2021 - Todos os direitos reservados - receitas Foodfy</p>
+      </footer>
+    {% endblock subFooter %}
+  {% endblock footer %}
+</div>
+
+{% include '../parts/footer.njk' %}

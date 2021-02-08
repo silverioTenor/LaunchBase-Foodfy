@@ -1,0 +1,76 @@
+{% extends './layout.njk' %}
+
+{% block subTitle %}
+  <title>Página inicial</title>
+{% endblock subTitle %}
+
+{% block filter %}
+  <form method="GET" action="/recipes" class="nav-filter">
+    <input type="text" name="filter" placeholder="Buscar uma receita"/>
+    <button type="submit" class="button">Pesquisar</button>
+  </form>
+{% endblock filter %}
+
+{% block content %}
+
+  <section id="banner">
+    <div class="banner-content">
+      <h1>As melhores receitas</h1>
+
+      <p>Aprenda a construir os melhores pratos com receitas criadas por profissionais do mundo inteiro.</p>
+    </div>
+
+    <a href="/">
+      <img src="/img/system/chef.png" alt="chef-foodfy"/>
+    </a>
+  </section>
+
+  <section class="recipes-container">
+    <h2>Mais acessadas</h2>
+
+    <div class="recipes">
+      <div class="recipe">
+        <img src="/img/common/burger.png" alt="Búrger"/>
+
+        <strong>Triplo bacon burger</strong>
+        <span>por Jorge Relato</span>
+      </div>
+
+      <div class="recipe">
+        <img src="/img/common/pizza.png" alt="Pizza 4 estações"/>
+
+        <strong>Pizza 4 estações</strong>
+        <span>por Fabiana Melo</span>
+      </div>
+
+      <div class="recipe">
+        <img src="/img/common/espaguete.png" alt="Espaguete"/>
+
+        <strong>Espaguete ao alho</strong>
+        <span>por Júlia Kinoto</span>
+      </div>
+
+      <div class="recipe">
+        <img src="/img/common/lasanha.png" alt="Lasanha"/>
+
+        <strong>Lasanha mac'n cheese</strong>
+        <span>por Juliano Vieira</span>
+      </div>
+
+      <div class="recipe">
+        <img src="/img/common/doce.png" alt="Docinho"/>
+
+        <strong>Docinho pão-do-céu</strong>
+        <span>por Ricardo Govea</span>
+      </div>
+
+      <div class="recipe">
+        <img src="/img/common/asinhas.png" alt="Asinha"/>
+
+        <strong>Asinha de frango ao barbecue</strong>
+        <span>por Vania Steroski</span>
+      </div>
+    </div>
+  </section>
+
+{% endblock content %}
