@@ -19,7 +19,7 @@ h1, h2, h3, h4, h5, h6, strong {
 
 a, p, span, input, select, textarea, button {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: normal;
 }
 
 input {
@@ -88,6 +88,10 @@ button:hover {
 
 .nav-menu a+a {
   margin-left: 30px;
+}
+
+.nav-menu a.activated_link {
+  font-weight: 700;
 }
 
 footer {
