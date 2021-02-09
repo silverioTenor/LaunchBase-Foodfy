@@ -10,14 +10,18 @@
     </div>
 
     <div class="banner-recipe-show">
-      <img src="/img/common/burger.png" alt="Burger"/>
+      <img src="/img/common/burger.png" alt="Burger" onclick="Lightbox.openModal()"/>
 
       <div class="small-banner-view">
-        <img src="/img/common/burger.png" alt="Burger"/>
-        <img src="/img/common/asinhas.png" alt="Asinhas"/>
-        <img src="/img/common/pizza.png" alt="Pizza"/>
+        <img class="photoActivated" onclick="ImagesPreview.visible(this)" src="/img/common/burger.png" alt="Burger"/>
+
+        <img onclick="ImagesPreview.visible(this)" src="/img/common/asinhas.png" alt="Asinhas"/>
+
+        <img onclick="ImagesPreview.visible(this)" src="/img/common/pizza.png" alt="Pizza"/>
       </div>
     </div>
+
+    <div class="lightbox-container"></div>
 
     <div class="recipe-container-title">
       <h1>Triplo Bacon Burger</h1>

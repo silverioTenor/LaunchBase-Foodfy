@@ -14,31 +14,123 @@
   height: 280px;
   object-fit: cover;
   border-radius: 15px;
+  cursor: zoom-in;
 }
 
 .small-banner-view {
   margin-top: 8px;
   display: flex;
   justify-content: flex-end;
+  gap: 4px;
 }
 
 .small-banner-view img {
   width: 50px;
   height: 50px;
-  margin-right: 8px;
   object-fit: cover;
   border: 1px solid #DDD;
   border-radius: 4px;
+  overflow: hidden;
   transition: opacity 0.2s;
+  opacity: 0.5;
   cursor: pointer;
 }
 
-.small-banner-view img:last-child {
-  margin-right: initial;
+.small-banner-view img:hover {
+  opacity: initial;
 }
 
-.small-banner-view img:hover {
-  opacity: 0.5;
+.small-banner-view img.photoActivated {
+  opacity: initial;
+}
+
+.lightbox-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: -100vh;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.activated_modal {
+  top: 0;
+  opacity: initial;
+}
+
+.lightbox-modal {
+  width: 100%;
+  max-width: 1024px;
+  height: 700px;
+  position: relative;
+  background: #ccc;
+}
+
+.lightbox-modal i.keyboard_arrow_left {
+  margin-left: 40px;
+}
+
+.lightbox-modal i.keyboard_arrow_right {
+  right: 0;
+  margin-right: 40px;
+}
+
+i.keyboard_arrow_left, i.keyboard_arrow_right {
+  position: absolute;
+  top: 46%;
+  font-size: 60px;
+  color: #bdbdbd;
+  background: #3d3d3d;
+  border-radius: 50%;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+i.keyboard_arrow_left:hover, i.keyboard_arrow_right:hover {
+  color: #d8d8d8;
+  background: #555555;
+}
+
+.lightbox-modal i.keyboard_arrow_left {
+  margin-left: 40px;
+}
+
+.lightbox-modal i.keyboard_arrow_right {
+  right: 0;
+  margin-right: 40px;
+}
+
+i.closeModal {
+  padding: 10px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 4px 2px #a5a5a5;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+i.closeModal:hover {
+  background-color: #a5a5a5;
+}
+
+.slideShow {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.slideShow img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .recipe-container-title {
