@@ -1,0 +1,49 @@
+@keyframes toastMessage {
+  to {
+    top: 15px;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes toastMessageDismiss {
+  from {
+    top: 15px;
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    top: -200px;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.message-container {
+  width: 100%;
+  max-width: 344px;
+  height: 135px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -200px;
+  right: 15px;
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  animation: toastMessage 1s forwards;
+}
+
+.message-container.dismiss {
+  animation: toastMessageDismiss 1s forwards;
+}
+
+.message-container p {
+  color: #fff;
+  font-weight: 700;
+}
+
+.message-container.success {
+  background: #01B12A;
+}

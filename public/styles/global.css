@@ -48,6 +48,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: 700;
   color: #fff;
   background: #6558C3;
   border-radius: 4px;
