@@ -1,0 +1,43 @@
+.users {
+  margin-top: 70px;
+  display: flex;
+  flex-flow: wrap;
+  gap: 50px;
+}
+
+.user {
+  width: 100%;
+  max-width: 308px;
+  display: flex;
+  flex-direction: column;
+}
+
+.user strong {
+  font-size: 18px;
+}
+
+.user span {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #777;
+}
+
+.action-buttons {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.action-buttons button, .action-buttons a {
+  min-width: 0;
+  height: initial;
+  color: #6558C3;
+  font-weight: 700;
+  background: transparent;
+  border: none;
+}
+
+.action-buttons button+button {
+  margin-left: 16px;
+  color: #F55A5A;
+}
