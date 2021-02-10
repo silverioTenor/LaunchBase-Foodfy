@@ -37,6 +37,11 @@ input:focus {
   border-color: #6558C3;
 }
 
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #111;
+  box-shadow: 0 0 0px 1000px #fff inset;
+}
+
 button {
   min-width: 140px;
   height: 37px;
@@ -53,6 +58,28 @@ button {
 
 button:hover {
   background: #4c4294;
+  border-color: #4c4294;
+}
+
+.btn-delete {
+  background: #DC4747;
+  border-color: #DC4747;
+}
+
+.btn-delete:hover {
+  background: #bd3d3d;
+  border-color: #bd3d3d;
+}
+
+.btn-cancel {
+  margin-left: 16px;
+  background: #8a8a8a;
+  border-color: #8a8a8a;
+}
+
+.btn-cancel:hover {
+  background: #727272;
+  border-color: #727272;
 }
 
 .container-global {

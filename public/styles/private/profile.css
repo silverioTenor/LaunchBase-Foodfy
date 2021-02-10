@@ -3,6 +3,14 @@
   margin-top: 50px;
 }
 
+.header-buttons {
+  display: flex;
+}
+
+.header-buttons button+button {
+  margin-left: 16px;
+}
+
 #form-profile {
   width: 100%;
   margin-top: 67px;
@@ -11,15 +19,30 @@
   gap: 40px;
 }
 
-#form-profile div {
+#form-profile .field-container {
   display: flex;
   flex-direction: column;
 }
 
-#form-profile div label {
+#form-profile .field-container label {
   font-weight: 700;
 }
 
-#form-profile div input {
+#form-profile .field-container input {
   margin-top: 10px;
+}
+
+#checkbox {
+  display: flex;
+  align-items: center;
+}
+
+#checkbox input[type=checkbox] {
+  min-width: initial;
+  margin-top: initial;
+  margin-right: 8px;
+}
+
+#checkbox span {
+  font-weight: 700;
 }

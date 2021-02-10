@@ -1,0 +1,12 @@
+{% extends '../layout.njk' %}
+{% import './fields.njk' as profile %}
+
+{% block subTitle %}
+  <title>Página de Cadastro</title>
+{% endblock subTitle %}
+
+{% block content %}
+
+  {{ profile.fields('Criar Usuário', false, true, true) }}
+
+{% endblock content %}

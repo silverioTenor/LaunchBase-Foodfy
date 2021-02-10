@@ -5,4 +5,9 @@
 .dark .nav-menu a {
   color: #999;
   text-transform: uppercase;
+  font-size: 15px;
+}
+
+.dark .nav-menu a.activated_link {
+  color: #fff;
 }

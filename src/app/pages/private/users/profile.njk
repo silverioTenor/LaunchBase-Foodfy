@@ -1,0 +1,12 @@
+{% extends '../layout.njk' %}
+{% import './fields.njk' as profile %}
+
+{% block subTitle %}
+  <title>Perfil | Usuário</title>
+{% endblock subTitle %}
+
+{% block content %}
+
+  {{ profile.fields('Bem vindo Usuário', false, false, false) }}
+
+{% endblock content %}

@@ -1,0 +1,43 @@
+{% macro fields(title, isDelete, isCancel, isCheck) %}
+
+  <section class="admin-container">
+    <div class="header-section">
+      <h1>{{ title }}</h1>
+
+      <div class="header-buttons">
+        {% if isDelete %}
+          <button class="btn-delete">Deletar</button>
+        {% endif %}
+
+        <button type="submit">Salvar</button>
+
+        {% if isCancel %}
+          <button class="btn-cancel" onclick="history.back()">Cancelar</button>
+        {% endif %}
+      </div>
+    </div>
+
+    <form id="form-profile" method="POST" action="?">
+      <div class="field-container">
+        <label for="name">Nome</label>
+        <input type="text" name="name" placeholder="Digite seu nome"/>
+      </div>
+      <div class="field-container">
+        <label for="email">Email</label>
+        <input type="email" name="email" placeholder="exemplo@exemplo.com"/>
+      </div>
+      <div class="field-container">
+        {% if isCheck %}
+          <div id="checkbox">
+            <input type="checkbox" name="isAdmin" value="Administrador"/>
+            <span>Administrador</span>
+          </div>
+        {% else %}
+          <label for="password">Senha</label>
+          <input type="password" name="password" placeholder="Digite sua senha"/>
+        {% endif %}
+      </div>
+    </form>
+  </section>
+
+{% endmacro %}

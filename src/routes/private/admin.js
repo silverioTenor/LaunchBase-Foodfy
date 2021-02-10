@@ -1,9 +1,13 @@
 const { Router } = require('express');
 
 const ProfileController = require('../../app/controllers/ProfileController');
+const UserController = require('../../app/controllers/UserController');
 
-const adminRouter = Router();
+const adminRoutes = Router();
 
-adminRouter.get('/profile', ProfileController.profile);
+adminRoutes.get('/profile', ProfileController.profile);
 
-module.exports = adminRouter;
+adminRoutes.get('/users/create', UserController.create);
+adminRoutes.get('/users/update', UserController.update);
+
+module.exports = adminRoutes;

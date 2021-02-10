@@ -1,0 +1,12 @@
+{% extends '../layout.njk' %}
+{% import './fields.njk' as profile %}
+
+{% block subTitle %}
+  <title>Página de Atualização</title>
+{% endblock subTitle %}
+
+{% block content %}
+
+  {{ profile.fields('Atualizar Usuário', true, false, true) }}
+
+{% endblock content %}

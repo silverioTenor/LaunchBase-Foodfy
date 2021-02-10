@@ -1,6 +1,6 @@
 const ProfileController = {
   profile(request, response) {
-    return response.render('private/profile');
+    return response.render('private/users/profile');
   },
 };
 
