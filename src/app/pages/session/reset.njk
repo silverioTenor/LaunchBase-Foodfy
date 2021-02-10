@@ -1,0 +1,26 @@
+{% extends './layout.njk' %}
+
+{% block subTitle %}
+  <title>Página de Recuperação de Senha</title>
+{% endblock subTitle %}
+
+{% block content %}
+
+  <header id="header-reset">
+    <img src="/img/system/logo_black.png" alt="/Foodfy"/>
+  </header>
+
+  <section class="reset-container">
+    <h1>Esqueceu a Senha?</h1>
+
+    <form id="reset-form" method="" action="?">
+      <div class="field-container">
+        <label for="email">Email</label>
+        <input type="email" name="email"/>
+      </div>
+
+      <button type="submit">Recuperar</button>
+    </form>
+  </section>
+
+{% endblock content %}

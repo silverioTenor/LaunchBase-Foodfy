@@ -1,0 +1,15 @@
+{% include '../components/parts/header.njk' %}
+
+{% block title %}
+  {% block subTitle %}{% endblock subTitle %}
+{% endblock title %}
+
+<div class="container-global">
+
+  <div class="container-global-into">
+    {% block content %}{% endblock content %}
+  </div>
+
+</div>
+
+{% include '../components/parts/footer.njk' %}

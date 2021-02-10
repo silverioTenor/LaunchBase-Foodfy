@@ -7,4 +7,6 @@ const RemoveUser = {
   }
 }
 
-RemoveUser.invoke();
+if (document.querySelector('.action-buttons')) {
+  RemoveUser.invoke();
+}

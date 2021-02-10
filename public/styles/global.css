@@ -24,7 +24,7 @@ a, p, span, input, select, textarea, button {
 
 input {
   min-width: 246px;
-  padding: 20px 16px;
+  padding: 18px 16px;
   border-radius: 4px;
   border: 1px solid #DDD;
 }
