@@ -4,6 +4,8 @@ const sessionRoutes = Router();
 
 const SessionController = require('../app/controllers/SessionController');
 
-sessionRoutes.get('/password-reset', SessionController.reset);
+sessionRoutes.get('/login', SessionController.loginForm);
+
+sessionRoutes.get('/password-reset', SessionController.resetForm);
 
 module.exports = sessionRoutes;

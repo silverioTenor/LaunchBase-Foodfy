@@ -1,0 +1,34 @@
+{% extends './layout.njk' %}
+
+{% block subTitle %}
+  <title>Página de Login</title>
+{% endblock subTitle %}
+
+{% block content %}
+
+  <header id="header-session">
+    <img src="/img/system/logo_black.png" alt="/Foodfy"/>
+  </header>
+
+  <section class="session-container">
+    <h1>Iniciar Sessão</h1>
+
+    <form id="login-form" method="POST" action="?">
+      <div class="field-container">
+        <label for="email">Email</label>
+        <input type="email" name="email" placeholder="Digite seu email"/>
+      </div>
+
+      <div class="field-container">
+        <label for="password">Senha</label>
+        <input type="password" name="password" placeholder="Digite sua senha"/>
+      </div>
+
+      <div class="login-buttons">
+        <a href="/session/forgot-password">Perdeu a senha?</a>
+        <button type="submit">Acessar</button>
+      </div>
+    </form>
+  </section>
+
+{% endblock content %}

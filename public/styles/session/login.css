@@ -1,0 +1,30 @@
+#login-form {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+#login-form .field-container {
+  width: 100%;
+}
+
+#login-form .field-container+.field-container {
+  margin-top: 35px;
+}
+
+#login-form .login-buttons {
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#login-form .login-buttons a {
+  color: #969696;
+  font-weight: 700;
+}
