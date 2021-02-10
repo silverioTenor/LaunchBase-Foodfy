@@ -1,0 +1,25 @@
+.admin-container {
+  width: 100%;
+  margin-top: 50px;
+}
+
+#form-profile {
+  width: 100%;
+  margin-top: 67px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+#form-profile div {
+  display: flex;
+  flex-direction: column;
+}
+
+#form-profile div label {
+  font-weight: 700;
+}
+
+#form-profile div input {
+  margin-top: 10px;
+}

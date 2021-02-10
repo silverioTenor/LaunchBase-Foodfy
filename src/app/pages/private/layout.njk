@@ -1,0 +1,30 @@
+{% include '../components/parts/header.njk' %}
+
+{% block title %}
+  {% block subTitle %}{% endblock subTitle %}
+{% endblock title %}
+
+<div class="container-global">
+  <header class="header-navigation dark">
+    <div class="header-navigation-into">
+      <a href="/admin" class="logoImg">
+        <img src="/img/system/logo_white.png" alt="logo"/>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="/admin/recipes">Receitas</a>
+        <a href="/admin/chefs">Chefs</a>
+        <a href="/admin/users">Usuários</a>
+      </nav>
+
+      {% block filter %}{% endblock filter %}
+    </div>
+  </header>
+
+  <div class="container-global-into">
+    {% block content %}{% endblock content %}
+  </div>
+
+</div>
+
+{% include '../components/parts/footer.njk' %}

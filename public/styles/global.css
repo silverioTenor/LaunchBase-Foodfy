@@ -24,7 +24,7 @@ a, p, span, input, select, textarea, button {
 
 input {
   min-width: 246px;
-  padding: 10px 8px;
+  padding: 20px 16px;
   border-radius: 4px;
   border: 1px solid #DDD;
 }
@@ -38,7 +38,11 @@ input:focus {
 }
 
 button {
-  padding: 10px 20px;
+  min-width: 140px;
+  height: 37px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #fff;
   background: #6558C3;
   border-radius: 4px;
@@ -65,50 +69,4 @@ button:hover {
   max-width: 1024px;
   margin: 0 auto;
   flex: 1;
-}
-
-.header-navigation {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.header-navigation-into {
-  width: 100%;
-  max-width: 1024px;
-  height: 90px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header-navigation-into>a {
-  margin-right: 120px;
-}
-
-.nav-menu {
-  flex: 1;
-}
-
-.nav-menu a+a {
-  margin-left: 30px;
-}
-
-.nav-menu a.activated_link {
-  font-weight: 700;
-}
-
-footer {
-  width: 100%;
-  padding: 24px 0;
-  margin-top: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #eee;
-}
-
-footer p {
-  font-size: 14px;
-  color: #999;
 }

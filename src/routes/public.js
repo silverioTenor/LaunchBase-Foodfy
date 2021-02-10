@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const publicRoutes = Router();
 
-const HomeController = require('../../app/controllers/HomeController');
+const HomeController = require('../app/controllers/HomeController');
 
 publicRoutes.get('/', HomeController.home);
 publicRoutes.get('/recipes', HomeController.recipes);

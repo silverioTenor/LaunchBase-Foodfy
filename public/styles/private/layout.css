@@ -1,0 +1,8 @@
+.dark {
+  background: #111;
+}
+
+.dark .nav-menu a {
+  color: #999;
+  text-transform: uppercase;
+}
