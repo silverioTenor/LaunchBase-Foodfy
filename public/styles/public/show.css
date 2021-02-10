@@ -156,9 +156,46 @@ i.closeModal:hover {
   ;
 }
 
-.recipe-box h2 {
+.header-box {
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.header-box h2 {
+  margin-right: 8px;
   font-size: 24px;
+}
+
+.header-box span {
+  color: #999;
+  cursor: pointer;
+}
+
+@keyframes activatedContent {
+  to {
+    margin-top: -200px;
+    opacity: 0;
+  }
+}
+
+@keyframes disabledContent {
+  from {
+    margin-top: -150px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+.box-content.activated_content {
+  animation: activatedContent 1s;
+}
+
+.box-content.disabled_content {
+  animation: disabledContent 1s;
 }
 
 .recipe-box p, ul {
