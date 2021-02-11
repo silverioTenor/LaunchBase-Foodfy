@@ -1,4 +1,5 @@
 {% extends './layout.njk' %}
+{% import '../components/inputContainer.njk' as field %}
 
 {% block subTitle %}
   <title>Página de Recuperação de Senha</title>
@@ -13,13 +14,16 @@
   <section class="session-container">
     <h1>Esqueceu a Senha?</h1>
 
-    <form id="reset-form" method="" action="?">
+    <form id="reset-form" method="POST" action="?">
       <div class="field-container">
         <label for="email">Email</label>
-        <input type="email" name="email"/>
+
+        {{ field.input('email', 'email', 'Digite o email cadastrado') }}
       </div>
 
-      <button type="submit">Recuperar</button>
+      <div class="login-buttons">
+        <button type="submit">Recuperar</button>
+      </div>
     </form>
   </section>
 

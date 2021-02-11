@@ -1,3 +1,5 @@
-<div class="message-container success">
-  <p>Esta é uma mensagem de sucesso!</p>
-</div>
+{% if toast %}
+  <div class="message-container {{ toast.status }}">
+    <p>{{ toast.message }}</p>
+  </div>
+{% endif %}

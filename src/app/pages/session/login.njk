@@ -1,4 +1,5 @@
 {% extends './layout.njk' %}
+{% import '../components/inputContainer.njk' as field %}
 
 {% block subTitle %}
   <title>Página de Login</title>
@@ -16,16 +17,18 @@
     <form id="login-form" method="POST" action="?">
       <div class="field-container">
         <label for="email">Email</label>
-        <input type="email" name="email" placeholder="Digite seu email"/>
+
+        {{ field.input('email', 'email', 'Digite seu email') }}
       </div>
 
       <div class="field-container">
         <label for="password">Senha</label>
-        <input type="password" name="password" placeholder="Digite sua senha"/>
+
+        {{ field.input('password', 'password', 'Digite sua senha') }}
       </div>
 
       <div class="login-buttons">
-        <a href="/session/forgot-password">Perdeu a senha?</a>
+        <a href="/session/password-reset">Perdeu a senha?</a>
         <button type="submit">Acessar</button>
       </div>
     </form>
