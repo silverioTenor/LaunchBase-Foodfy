@@ -1,12 +1,14 @@
-{% macro recipeShow() %}
+{% macro recipeShow(hasButton, hasToggle) %}
 
   <section class="recipes-container">
     <div class="header-section">
       <h2>Receita: Triplo Bacon Burger</h2>
 
-      <a href="/">
-        <button>Editar receita</button>
-      </a>
+      {% if hasButton %}
+        <a href="/">
+          <button>Editar receita</button>
+        </a>
+      {% endif %}
     </div>
 
     <div class="banner-recipe-show">
@@ -31,7 +33,10 @@
     <div class="recipe-box">
       <div class="header-box">
         <h2>Ingredientes</h2>
-        <span>esconder</span>
+
+        {% if hasToggle %}
+          <span>esconder</span>
+        {% endif %}
       </div>
 
       <ul class="box-content">
@@ -59,7 +64,10 @@
     <div class="recipe-box">
       <div class="header-box">
         <h2>Modo de preparo</h2>
-        <span>esconder</span>
+
+        {% if hasToggle %}
+          <span>esconder</span>
+        {% endif %}
       </div>
 
       <ul class="box-content">
@@ -87,7 +95,10 @@
     <div class="recipe-box">
       <div class="header-box">
         <h2>Informações adicionais</h2>
-        <span>esconder</span>
+
+        {% if hasToggle %}
+          <span>esconder</span>
+        {% endif %}
       </div>
 
       <p class="box-content">

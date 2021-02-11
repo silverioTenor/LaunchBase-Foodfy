@@ -1,5 +1,5 @@
 {% extends './layout.njk' %}
-{% import '../components/views/recipeShow.njk' as show %}
+{% import '../components/recipeShow.njk' as show %}
 
 {% block subTitle %}
   <title>Foodfy | Triplo Bacon Burger</title>
@@ -7,6 +7,6 @@
 
 {% block content %}
 
-  {{ show.recipeShow() }}
+  {{ show.recipeShow(false, true) }}
 
 {% endblock content %}

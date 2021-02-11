@@ -26,13 +26,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
   top: -200px;
   right: 15px;
   border-radius: 4px;
   opacity: 0;
   visibility: hidden;
   animation: toastMessage 1s forwards;
+  z-index: 1;
 }
 
 .message-container.dismiss {

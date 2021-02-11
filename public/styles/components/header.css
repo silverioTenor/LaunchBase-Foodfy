@@ -32,3 +32,15 @@
 .nav-menu a.activated_link {
   font-weight: 700;
 }
+
+#form-filter input {
+  padding: initial;
+  padding: 14px;
+  border-radius: 4px 0 0 4px;
+}
+
+#form-filter button {
+  height: initial;
+  padding: 14px 0;
+  border-radius: 0 4px 4px 0;
+}

@@ -1,0 +1,8 @@
+{% macro area(route, placeholder) %}
+
+  <form id="form-filter" method="GET" action="{{ route }}" class="nav-filter">
+    <input type="text" name="filter" placeholder="{{ placeholder }}"/>
+    <button type="submit" class="button">Pesquisar</button>
+  </form>
+
+{% endmacro %}

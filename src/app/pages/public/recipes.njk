@@ -1,14 +1,12 @@
 {% extends './layout.njk' %}
+{% import '../components/areaSearch.njk' as search %}
 
 {% block subTitle %}
   <title>Foodfy | Receitas</title>
 {% endblock subTitle %}
 
 {% block filter %}
-  <form method="GET" action="/recipes" class="nav-filter">
-    <input type="text" name="filter" placeholder="Buscar uma receita"/>
-    <button type="submit" class="button">Pesquisar</button>
-  </form>
+  {{ search.area('/recipes', 'Buscar uma receita') }}
 {% endblock filter %}
 
 {% block content %}
