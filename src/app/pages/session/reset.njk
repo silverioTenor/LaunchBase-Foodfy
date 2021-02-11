@@ -21,8 +21,20 @@
         {{ field.input('email', 'email', 'Digite o email cadastrado') }}
       </div>
 
+      <div class="field-container">
+        <label for="email">Nova senha</label>
+
+        {{ field.input('password', 'password', 'Digite sua nova senha') }}
+      </div>
+
+      <div class="field-container">
+        <label for="email">Repetir senha</label>
+
+        {{ field.input('password', 'repeatPassword', 'Repetir a nova senha') }}
+      </div>
+
       <div class="login-buttons">
-        <button type="submit">Recuperar</button>
+        <button type="submit">Nova senha</button>
       </div>
     </form>
   </section>

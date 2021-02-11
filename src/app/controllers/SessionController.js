@@ -3,22 +3,22 @@ const SessionController = {
     return response.render('session/login');
   },
   login(request, response) {
-    return response.render('session/');
+    return
   },
   logout(request, response) {
-    return response.render('session/');
+    return
   },
   forgotForm(request, response) {
-    return response.render('session/');
+    return response.render('session/forgot');
   },
   forgot(request, response) {
-    return response.render('session/');
+    return
   },
   resetForm(request, response) {
     return response.render('session/reset');
   },
   reset(request, response) {
-    return response.render('session/reset');
+    return
   },
 }
 

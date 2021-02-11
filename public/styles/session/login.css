@@ -12,7 +12,7 @@
   width: 100%;
 }
 
-#login-form .field-container+.field-container {
+.field-container+.field-container {
   margin-top: 35px;
 }
 
