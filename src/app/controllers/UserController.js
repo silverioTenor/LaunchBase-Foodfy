@@ -5,6 +5,9 @@ const UserController = {
   create(request, response) {
     return response.render('private/users/create');
   },
+  post(request, response) {
+    const { name, email, isAdmin } = request.body;
+  },
   update(request, response) {
     return response.render('private/users/update');
   },
