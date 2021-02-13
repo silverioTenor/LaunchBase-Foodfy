@@ -11,3 +11,13 @@
 .dark .nav-menu a.activated_link {
   color: #fff;
 }
+
+.dark #form-filter input {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.315);
+  border-color: rgba(255, 255, 255, 0.089);
+}
+
+.dark #form-filter input::placeholder {
+  color: rgba(255, 255, 255, 0.575);
+}

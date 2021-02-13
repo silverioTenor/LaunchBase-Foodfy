@@ -1,9 +1,14 @@
 {% extends '../layout.njk' %}
+{% import '../../components/areaSearch.njk' as search %}
 {% import '../../components/chefsList.njk' as list %}
 
 {% block subTitle %}
   <title>Página de Receitas</title>
 {% endblock subTitle %}
+
+{% block filter %}
+  {{ search.area('/admin/recipes', 'Buscar pelo nome') }}
+{% endblock filter %}
 
 {% block content %}
 
