@@ -1,0 +1,22 @@
+{% extends '../layout.njk' %}
+{% import '../../components/chefsList.njk' as list %}
+
+{% block subTitle %}
+  <title>Página de Receitas</title>
+{% endblock subTitle %}
+
+{% block content %}
+
+  <section class="admin-container">
+    <div class="header-section">
+      <h1>Gerenciar chefs</h1>
+
+      <a href="/admin/chefs/create">
+        <button>Cadastrar</button>
+      </a>
+    </div>
+
+    {{ list.chefs(false) }}
+  </section>
+
+{% endblock content %}

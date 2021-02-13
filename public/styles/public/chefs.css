@@ -12,6 +12,7 @@
   height: 64px;
   margin-right: 20px;
   object-fit: cover;
+  box-shadow: 3px 3px 4px 1px #8f8f8f;
   border-radius: 50%;
 }
 

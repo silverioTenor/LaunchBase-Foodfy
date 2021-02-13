@@ -1,0 +1,9 @@
+.admin-container .chef-content strong {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.admin-container .chef-content button {
+  margin-top: 10px;
+  font-size: 14px;
+}

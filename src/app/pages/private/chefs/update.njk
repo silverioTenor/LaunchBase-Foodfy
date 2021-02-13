@@ -1,0 +1,12 @@
+{% extends '../layout.njk' %}
+{% import './fields.njk' as chef %}
+
+{% block subTitle %}
+  <title>Página de Edição</title>
+{% endblock subTitle %}
+
+{% block content %}
+
+  {{ chef.fields('Editando chef', true, false) }}
+
+{% endblock content %}

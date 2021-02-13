@@ -1,0 +1,89 @@
+{% macro chefs(publicPage) %}
+
+  <div class="recipes chefs">
+    <div class="chef">
+      <img src="/img/common/burger.png" alt="Búrger"/>
+
+      <div class="chef-content">
+        <strong>Jorge Relato</strong>
+
+        {% if publicPage %}
+          <span>3 receitas</span>
+        {% else %}
+          <button class="btn-no-background">Visualizar</button>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="chef">
+      <img src="/img/common/pizza.png" alt="Pizza 4 estações"/>
+
+      <div class="chef-content">
+        <strong>Fabiana Melo</strong>
+
+        {% if publicPage %}
+          <span>3 receitas</span>
+        {% else %}
+          <button class="btn-no-background">Visualizar</button>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="chef">
+      <img src="/img/common/espaguete.png" alt="Espaguete"/>
+
+      <div class="chef-content">
+        <strong>Júlia Kinoto</strong>
+
+        {% if publicPage %}
+          <span>3 receitas</span>
+        {% else %}
+          <button class="btn-no-background">Visualizar</button>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="chef">
+      <img src="/img/common/lasanha.png" alt="Lasanha"/>
+
+      <div class="chef-content">
+        <strong>Juliano Vieira</strong>
+
+        {% if publicPage %}
+          <span>3 receitas</span>
+        {% else %}
+          <button class="btn-no-background">Visualizar</button>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="chef">
+      <img src="/img/common/doce.png" alt="Docinho"/>
+
+      <div class="chef-content">
+        <strong>Ricardo Govea</strong>
+
+        {% if publicPage %}
+          <span>3 receitas</span>
+        {% else %}
+          <button class="btn-no-background">Visualizar</button>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="chef">
+      <img src="/img/common/asinhas.png" alt="Asinha"/>
+
+      <div class="chef-content">
+        <strong>Vania Steroski</strong>
+
+        {% if publicPage %}
+          <span>3 receitas</span>
+        {% else %}
+          <button class="btn-no-background">Visualizar</button>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+{% endmacro %}

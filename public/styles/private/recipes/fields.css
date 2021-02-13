@@ -4,15 +4,7 @@
 }
 
 .field-container button {
-  min-width: 0px;
-  width: fit-content;
-  height: 0;
   margin-top: 14px;
-  display: swap;
-  font-weight: 500;
-  color: #6558C3;
-  background: transparent;
-  border: 0;
 }
 
 .field-container select {

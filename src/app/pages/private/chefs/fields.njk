@@ -1,0 +1,36 @@
+{% import '../../components/inputContainer.njk' as field %}
+
+{% macro fields(title, isDelete, hasAddInputButton) %}
+
+  <form class="admin-container" method="POST" action="?">
+    <div class="header-section">
+      <h1>{{ title }}</h1>
+
+      <div class="header-buttons">
+        {% if isDelete %}
+          <button class="btn-delete" type="button">Deletar</button>
+        {% endif %}
+
+        <div class="login-buttons">
+          <button type="submit">Salvar chef</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="form-recipe">
+      <div class="field-container">
+        <label for="name">Nome</label>
+
+        {{ field.input('text', 'name', 'Nome do chef') }}
+      </div>
+
+      <div class="field-container">
+        <label for="name">Avatar</label>
+
+        {{ field.input('text', 'avatar_url', 'http://exemplo.com.br') }}
+      </div>
+
+    </div>
+  </form>
+
+{% endmacro %}

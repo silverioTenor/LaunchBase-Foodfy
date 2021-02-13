@@ -63,6 +63,17 @@ button:hover {
   border-color: #4c4294;
 }
 
+.btn-no-background {
+  min-width: 0px;
+  width: fit-content;
+  height: 0;
+  display: swap;
+  font-weight: 500;
+  color: #6558C3;
+  background: transparent;
+  border: 0;
+}
+
 .btn-delete {
   background: #DC4747;
   border-color: #DC4747;
