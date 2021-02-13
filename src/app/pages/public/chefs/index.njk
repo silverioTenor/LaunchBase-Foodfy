@@ -1,5 +1,5 @@
-{% extends './layout.njk' %}
-{% import '../components/chefsList.njk' as list %}
+{% extends '../layout.njk' %}
+{% import '../../components/chefsList.njk' as list %}
 
 {% block subTitle %}
   <title>Foodfy | Chefs</title>
@@ -9,7 +9,7 @@
 
   <section class="recipes-container">
 
-    {{ list.chefs(true) }}
+    {{ list.chefs('/chefs/show') }}
 
   </section>
 

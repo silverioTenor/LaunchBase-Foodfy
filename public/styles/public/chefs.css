@@ -1,10 +1,13 @@
 .chefs {
+  margin-top: 30px;
+  display: flex;
+  flex-flow: wrap;
   gap: 50px;
 }
 
 .chef {
   display: flex;
-  align-items: center;
+  justify-content: center;
 }
 
 .chef img {
@@ -12,7 +15,7 @@
   height: 64px;
   margin-right: 20px;
   object-fit: cover;
-  box-shadow: 3px 3px 4px 1px #8f8f8f;
+  box-shadow: 3px 3px 4px 1px #acacac;
   border-radius: 50%;
 }
 
@@ -20,15 +23,19 @@
   width: 130px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
 }
 
 .chef-content strong {
+  margin-top: 10px;
   font-size: 18px;
+  font-weight: normal;
 }
 
-.chef-content span {
+.chef-content button {
   margin-top: 5px;
+}
+
+.chef-content a {
   font-size: 14px;
-  color: #666;
+  color: #6558C3;
 }

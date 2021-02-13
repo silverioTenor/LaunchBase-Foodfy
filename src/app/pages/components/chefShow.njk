@@ -1,0 +1,64 @@
+{% macro chef(hasButton, link) %}
+
+  <section class="chef-container-show">
+    <div class="header-section">
+      <h1>Chef: Júlia Kinoto</h1>
+
+      {% if hasButton %}
+        <a href="/admin/chefs/update">
+          <button>Cadastrar</button>
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="chef-content">
+      <img src="/img/common/burger.png" alt="Burger"/>
+
+      <h1>Júlia Kinoto</h1>
+      <span>4 receitas</span>
+    </div>
+
+    <h2>Receitas</h2>
+
+    <div class="card-recipes-container">
+      <div class="card-recipe">
+        <img src="/img/common/burger.png" alt="Burger"/>
+
+        <div class="card-recipe-content">
+          <strong>Triplo bacon burger</strong>
+          <span>por Jorge Relato</span>
+
+          <button>
+            <a href="{{ link }}/recipes/show">Visualizar</a>
+          </button>
+        </div>
+      </div>
+
+      <div class="card-recipe">
+        <img src="/img/common/burger.png" alt="Burger"/>
+
+        <div class="card-recipe-content">
+          <strong>Triplo bacon burger</strong>
+          <span>por Jorge Relato</span>
+
+          <button>
+            <a href="{{ link }}/recipes/show">Visualizar</a>
+          </button>
+        </div>
+      </div>
+
+      <div class="card-recipe">
+        <img src="/img/common/burger.png" alt="Burger"/>
+
+        <div class="card-recipe-content">
+          <strong>Triplo bacon burger</strong>
+          <span>por Jorge Relato</span>
+
+          <button>
+            <a href="{{ link }}/recipes/show">Visualizar</a>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  {% endmacro %}

@@ -3,16 +3,19 @@ const HomeController = {
     return response.render('public/home');
   },
   recipes(request, response) {
-    return response.render('public/recipes');
+    return response.render('public/recipes/index');
   },
-  show(request, response) {
-    return response.render('public/show');
+  recipeShow(request, response) {
+    return response.render('public/recipes/show');
   },
   about(request, response) {
     return response.render('public/about');
   },
   chefs(request, response) {
-    return response.render('public/chefs');
+    return response.render('public/chefs/index');
+  },
+  chefShow(request, response) {
+    return response.render('public/chefs/show');
   },
 }
 
