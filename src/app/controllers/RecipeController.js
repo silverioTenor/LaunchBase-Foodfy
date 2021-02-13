@@ -5,6 +5,9 @@ const RecipeController = {
   create(request, response) {
     return response.render('private/recipes/create');
   },
+  show(request, response) {
+    return response.render('private/recipes/show');
+  },
   update(request, response) {
     return response.render('private/recipes/update');
   },

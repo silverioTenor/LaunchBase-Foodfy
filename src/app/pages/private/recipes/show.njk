@@ -1,0 +1,12 @@
+{% extends '../layout.njk' %}
+{% import '../../components/recipeShow.njk' as show %}
+
+{% block subTitle %}
+  <title>Foodfy | Triplo Bacon Burger</title>
+{% endblock subTitle %}
+
+{% block content %}
+
+  {{ show.recipeShow(true, false) }}
+
+{% endblock content %}

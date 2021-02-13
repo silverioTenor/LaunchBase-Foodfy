@@ -1,11 +1,11 @@
 {% macro recipeShow(hasButton, hasToggle) %}
 
-  <section class="recipes-container">
+  <section class="recipes-container bottom">
     <div class="header-section">
       <h2>Receita: Triplo Bacon Burger</h2>
 
       {% if hasButton %}
-        <a href="/">
+        <a href="/admin/recipes/update">
           <button>Editar receita</button>
         </a>
       {% endif %}
