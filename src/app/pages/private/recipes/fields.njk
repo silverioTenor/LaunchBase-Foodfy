@@ -1,0 +1,74 @@
+{% import '../../components/inputContainer.njk' as field %}
+
+{% macro fields(title, isDelete, hasAddInputButton) %}
+
+  <form class="admin-container" method="POST" action="?">
+    <div class="header-section">
+      <h1>{{ title }}</h1>
+
+      <div class="header-buttons">
+        {% if isDelete %}
+          <button class="btn-delete" type="button">Deletar</button>
+        {% endif %}
+
+        <div class="login-buttons">
+          <button type="submit">Salvar</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="form-recipe">
+      <div class="field-container">
+        <label for="name">Imagem da receita</label>
+
+        {{ field.input('text', 'avatar_url', 'http://exemplo.com.br') }}
+      </div>
+
+      <div class="field-container">
+        <label for="chef">Chef</label>
+
+        <select name="chef" id="chef">
+          <option class="select-option" value="">Selecione um chef</option>
+          <option value="">Fulano</option>
+          <option value="">Ciclano</option>
+          <option value="">Beltrano</option>
+        </select>
+      </div>
+
+      <div class="field-container">
+        <label>Ingredientes</label>
+
+        <div id="ingredients">
+          <div class="ingredient">
+            {{ field.input('text', 'ingredients[]', '') }}
+          </div>
+        </div>
+
+        {% if hasAddInputButton %}
+          <button type="button" class="add-ingredient">Adicionar novo ingrediente</button>
+        {% endif %}
+      </div>
+
+      <div class="field-container">
+        <label>Modo de preparo</label>
+
+        <div id="steps">
+          <div class="step">
+            {{ field.input('text', 'steps[]', '') }}
+          </div>
+        </div>
+
+        {% if hasAddInputButton %}
+          <button type="button" class="add-step">Adicionar novo passo</button>
+        {% endif %}
+      </div>
+
+      <div class="field-container">
+        <label for="info">Informações adicionais</label>
+
+        <textarea name="others-info" id="info"></textarea>
+      </div>
+    </div>
+  </form>
+
+{% endmacro %}

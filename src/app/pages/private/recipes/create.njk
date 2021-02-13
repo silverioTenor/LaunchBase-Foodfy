@@ -1,0 +1,12 @@
+{% extends '../layout.njk' %}
+{% import './fields.njk' as recipe %}
+
+{% block subTitle %}
+  <title>Página de Cadastro</title>
+{% endblock subTitle %}
+
+{% block content %}
+
+  {{ recipe.fields('Criando receita', false, true) }}
+
+{% endblock content %}

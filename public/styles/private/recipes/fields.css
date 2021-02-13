@@ -1,0 +1,50 @@
+#form-recipe {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.field-container button {
+  min-width: 0px;
+  width: fit-content;
+  height: 0;
+  margin-top: 14px;
+  display: swap;
+  font-weight: 500;
+  color: #6558C3;
+  background: transparent;
+  border: 0;
+}
+
+.field-container select {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #fff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-position-x: 98%;
+}
+
+.field-container select option {
+  padding: 18px 0;
+  color: #fff;
+  background: #6558C3;
+  appearance: none;
+}
+
+.field-container select option.select-option {
+  color: #999;
+}
+
+.field-container textarea {
+  width: 100%;
+  height: 200px;
+  margin-top: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}

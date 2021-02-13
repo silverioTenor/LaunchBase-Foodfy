@@ -5,6 +5,7 @@
   text-decoration: none;
   box-sizing: border-box;
   color: #111;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -22,7 +23,7 @@ a, p, span, input, select, textarea, button {
   font-weight: normal;
 }
 
-input {
+input, select, textarea {
   min-width: 246px;
   padding: 18px 16px;
   border-radius: 4px;
@@ -33,7 +34,7 @@ input::placeholder {
   color: #999;
 }
 
-input:focus {
+input:focus, select:focus, textarea:focus {
   border-color: #6558C3;
 }
 
