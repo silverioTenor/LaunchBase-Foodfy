@@ -21,7 +21,7 @@ const UserValidator = {
 
     if (toast) return response.render('private/users/create', { user: body, toast });
 
-    const { name, email, isAdmin } = request.body;
+    const { name, email, is_admin } = request.body;
 
     const user = new User();
 
@@ -34,7 +34,7 @@ const UserValidator = {
 
     if (hasUser) return response.render('private/users/create', { user: body, toast });
 
-    const statusAdministrative = (isAdmin === 'on') ? true : false;
+    const statusAdministrative = (is_admin === 'on') ? true : false;
 
     request.bodyValidated = {
       name,
