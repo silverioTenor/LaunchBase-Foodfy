@@ -6,9 +6,16 @@ class Base {
     this.table = this;
   }
 
-  find() { }
+  async find() {
+    try {
+      let sql = `SELECT * FROM ${this.table}`;
 
-  findAll() { }
+      const results = await db.query(sql);
+      return results.rows[0];
+    } catch (err) {
+      throw new Error(`Search error: ${err}`);
+    }
+  }
 
   async findOne(filters) {
     try {
@@ -25,18 +32,18 @@ class Base {
       const results = await db.query(sql);
       return results.rows[0];
     } catch (err) {
-      console.log(`Search error: ${err}`);
+      throw new Error(`Search error: ${err}`);
     }
   }
 
-  async save(values) {
+  async save(fields) {
     try {
-      let keys = [];
-      values = [];
+      let keys = [],
+        values = [];
 
-      Object.keys(values).map((key) => {
+      Object.keys(fields).map((key) => {
         keys.push(key);
-        values.push(`${values[key]}`);
+        values.push(`'${fields[key]}'`);
       });
 
       const sql = `INSERT INTO ${this.table} (${keys.join(',')}) 
@@ -45,7 +52,7 @@ class Base {
       const results = await db.query(sql);
       return results.rows[0].id;
     } catch (err) {
-      console.log(`Error saving: ${err}`);
+      throw new Error(`Error saving: ${err}`);
     }
   }
 

@@ -19,7 +19,7 @@ const UserValidator = {
   async post(request, response, next) {
     let toast = CheckFields.verify(request.body);
 
-    if (toast) return response.render('private/users/create', { user: body, toast });
+    if (toast) return response.render('private/users/create', { user: request.body, toast });
 
     const { name, email, is_admin } = request.body;
 
@@ -39,7 +39,7 @@ const UserValidator = {
     request.bodyValidated = {
       name,
       email,
-      isAdmin: statusAdministrative
+      is_admin: statusAdministrative
     }
 
     next();
