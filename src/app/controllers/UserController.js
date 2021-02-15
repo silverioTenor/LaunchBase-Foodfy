@@ -66,8 +66,24 @@ const UserController = {
       });
     }
   },
-  update(request, response) {
-    return response.render('private/users/update');
+  async update(request, response) {
+    try {
+      const { id } = request.params;
+
+      const userDB = new User();
+      const user = await userDB.findOne({ where: { id } });
+
+      return response.render('private/users/update', { user });
+    } catch (err) {
+      console.log(err);
+
+      return response.render('private/users/update', {
+        toast: {
+          status: 'error',
+          message: 'Usuário não encontrado!'
+        }
+      });
+    }
   },
 };
 
