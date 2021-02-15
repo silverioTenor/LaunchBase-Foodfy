@@ -112,6 +112,30 @@ const UserController = {
         }
       });
     }
+  },
+  async delete(request, response) {
+    try {
+      const { id } = request.body;
+
+      const userDB = new User();
+      await userDB.delete(id);
+
+      return response.render('private/users/index', {
+        toast: {
+          status: 'success',
+          message: 'Usuário removido com sucesso!'
+        }
+      });
+    } catch (err) {
+      console.log(err);
+
+      return response.render('private/users/index', {
+        toast: {
+          status: 'error',
+          message: 'Usuário não encontrado!'
+        }
+      });
+    }
   }
 };
 

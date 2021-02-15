@@ -98,7 +98,15 @@ class Base {
     }
   }
 
-  delete() { }
+  async delete(id) {
+    try {
+      const sql = `DELETE FROM ${this.table} WHERE id = ${id}`;
+
+      return await db.query(sql);
+    } catch (err) {
+      throw new Error(`Error saving: ${err}`);
+    }
+  }
 }
 
 module.exports = Base;
