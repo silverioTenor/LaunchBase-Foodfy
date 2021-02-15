@@ -7,6 +7,8 @@
 
 {% block content %}
 
-  {{ profile.fields('Criar Usuário', '', false, true, true) }}
+  <form class="admin-container" method="POST" action="/admin/users">
+    {{ profile.fields('Criar Usuário', '', false, true, true) }}
+  </form>
 
 {% endblock content %}

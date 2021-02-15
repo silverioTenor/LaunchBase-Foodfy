@@ -71,7 +71,7 @@ const UserController = {
       const { id } = request.params;
 
       const userDB = new User();
-      const user = await userDB.findOne({ where: { id } });
+      const user = await userDB.findByID(id);
 
       return response.render('private/users/update', { user });
     } catch (err) {
@@ -85,6 +85,34 @@ const UserController = {
       });
     }
   },
+  async put(request, response) {
+    const { id, name, email } = request.bodyValidated;
+
+    try {
+      const val = { id, column: 'id' };
+
+      const userDB = new User();
+      await userDB.update(val, { name, email });
+
+      return response.render('private/users/update', {
+        user: { name, email },
+        toast: {
+          status: 'success',
+          message: 'Dados atualizados com sucesso!'
+        }
+      });
+    } catch (err) {
+      console.log(err);
+
+      return response.render('private/users/update', {
+        user: { name, email },
+        toast: {
+          status: 'error',
+          message: 'Sistema indisponível. Tente novamente mais tarde.'
+        }
+      });
+    }
+  }
 };
 
 module.exports = UserController;

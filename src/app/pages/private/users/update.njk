@@ -7,6 +7,9 @@
 
 {% block content %}
 
-  {{ profile.fields('Atualizar Usuário', user, true, false, false) }}
+  <form class="admin-container" method="POST" action="/admin/users?_method=PUT">
+    <input type="hidden" name="id" value="{{ user.id }}"/>
+    {{ profile.fields('Atualizar Usuário', user, true, false, false) }}
+  </form>
 
 {% endblock content %}

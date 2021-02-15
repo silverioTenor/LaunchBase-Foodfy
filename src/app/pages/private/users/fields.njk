@@ -2,50 +2,48 @@
 
 {% macro fields(title, user, isDelete, isCancel, isCheck) %}
 
-  <form class="admin-container" method="POST" action="?">
-    <div class="header-section">
-      <h1>{{ title }}
-        {{ user.firstName }}!</h1>
+  <div class="header-section">
+    <h1>{{ title }}
+      {{ user.firstName }}!</h1>
 
-      <div class="header-buttons">
-        {% if isDelete %}
-          <button class="btn-delete" type="button">Deletar</button>
-        {% endif %}
+    <div class="header-buttons">
+      {% if isDelete %}
+        <button class="btn-delete" type="button">Deletar</button>
+      {% endif %}
 
-        <div class="login-buttons">
-          <button type="submit">Salvar</button>
+      <div class="login-buttons">
+        <button type="submit">Salvar</button>
+      </div>
+
+      {% if isCancel %}
+        <button class="btn-cancel" type="button" onclick="history.back()">Cancelar</button>
+      {% endif %}
+    </div>
+  </div>
+
+  <div id="form-profile">
+    <div class="field-container">
+      <label for="name">Nome</label>
+
+      {{ field.input('text', 'name', user.name, 'Digite seu nome') }}
+    </div>
+    <div class="field-container">
+      <label for="email">Email</label>
+
+      {{ field.input('email', 'email', user.email, 'exemplo@exemplo.com') }}
+    </div>
+    <div class="field-container">
+      {% if isCheck %}
+        <div id="checkbox">
+          <input type="checkbox" name="is_admin"/>
+          <span>Administrador</span>
         </div>
+      {% else %}
+        <label for="password">Senha</label>
 
-        {% if isCancel %}
-          <button class="btn-cancel" type="button" onclick="history.back()">Cancelar</button>
-        {% endif %}
-      </div>
+        {{ field.input('password', 'password', '', 'Digite sua senha') }}
+      {% endif %}
     </div>
-
-    <div id="form-profile">
-      <div class="field-container">
-        <label for="name">Nome</label>
-
-        {{ field.input('text', 'name', user.name, 'Digite seu nome') }}
-      </div>
-      <div class="field-container">
-        <label for="email">Email</label>
-
-        {{ field.input('email', 'email', user.email, 'exemplo@exemplo.com') }}
-      </div>
-      <div class="field-container">
-        {% if isCheck %}
-          <div id="checkbox">
-            <input type="checkbox" name="is_admin"/>
-            <span>Administrador</span>
-          </div>
-        {% else %}
-          <label for="password">Senha</label>
-
-          {{ field.input('password', 'password', '', 'Digite sua senha') }}
-        {% endif %}
-      </div>
-    </div>
-  </form>
+  </div>
 
 {% endmacro %}

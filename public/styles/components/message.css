@@ -23,6 +23,7 @@
   width: 100%;
   max-width: 344px;
   height: 135px;
+  padding: 0 20px;
   display: flex;
   justify-content: center;
   align-items: center;

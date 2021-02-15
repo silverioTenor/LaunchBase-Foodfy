@@ -22,6 +22,22 @@ class Base {
     }
   }
 
+  async findByID(id) {
+    try {
+      let sql = `SELECT * FROM ${this.table} WHERE id = ${id}`;
+
+      const results = await db.query(sql);
+
+      if (results.rows.length <= 0) {
+        throw new Error(`${this.table} not found!`);
+      }
+
+      return results.rows[0];
+    } catch (err) {
+      throw new Error(`Search error: ${err}`);
+    }
+  }
+
   async findOne(filters) {
     try {
       let sql = `SELECT * FROM ${this.table}`;
@@ -35,10 +51,6 @@ class Base {
       });
 
       const results = await db.query(sql);
-
-      if (results.rows.length <= 0) {
-        throw new Error(`${this.table} not found!`);
-      }
 
       return results.rows[0];
     } catch (err) {
@@ -66,7 +78,25 @@ class Base {
     }
   }
 
-  update() { }
+  async update(val, fields) {
+    try {
+      const { id, column } = val;
+
+      let setFields = [];
+
+      Object.keys(fields).map((key) => {
+        const line = `${key} = '${fields[key]}'`;
+        setFields.push(line);
+      });
+
+      const sql = `UPDATE ${this.table} SET ${setFields.join(',')}
+      WHERE ${column} = ${id}`;
+
+      return await db.query(sql);
+    } catch (err) {
+      throw new Error(`Error saving: ${err}`);
+    }
+  }
 
   delete() { }
 }
