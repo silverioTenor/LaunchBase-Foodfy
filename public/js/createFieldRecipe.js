@@ -34,4 +34,6 @@ const AddInputRecipe = {
   },
 }
 
-AddInputRecipe.init();
+if (document.querySelector('.add-ingredient')) {
+  AddInputRecipe.init();
+}

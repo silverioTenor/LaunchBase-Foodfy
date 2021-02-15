@@ -1,0 +1,112 @@
+@keyframes activeModalContainer {
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes removeModalContainer {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.remove-modal-container {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.remove-modal-container.active {
+  animation: activeModalContainer 1s forwards;
+}
+
+.remove-modal-container.dismiss {
+  animation: removeModalContainer 1s forwards;
+}
+
+@keyframes removeModal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes activeModal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes removeModal {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(500px);
+  }
+}
+
+.remove-modal {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px 40px;
+  border-radius: 8px;
+  background: #fff;
+  opacity: 0;
+  transform: translateY(500px);
+}
+
+.remove-modal.active {
+  animation: activeModal 1s forwards;
+}
+
+.remove-modal.dismiss {
+  animation: removeModal 1s forwards;
+}
+
+.remove-modal h2 {
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 28px;
+}
+
+.remove-modal .actions-buttons {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.remove-modal .actions-buttons button {
+  color: #6558C3;
+  background: transparent;
+  border-width: 2px;
+}
+
+.remove-modal .actions-buttons form button:hover {
+  color: #fff;
+  background: #FF3131;
+  border-color: #FF3131;
+}
+
+.remove-modal .actions-buttons form+button:hover {
+  color: #fff;
+  background: #6558C3;
+}

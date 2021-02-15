@@ -1,4 +1,5 @@
 {% extends '../layout.njk' %}
+{% import '../../components/confirmModalDelete.njk' as delete %}
 
 {% block subTitle %}
   <title>Página de Usuários</title>
@@ -27,8 +28,10 @@
             <button class="btn-no-background">
               <a href="/admin/users/update/{{ user.id }}">Editar</a>
             </button>
-            <button class="btn-no-background">Remover</button>
+            <button class="btn-no-background confirm-remove" onclick="ModalDelete.active()">Remover</button>
           </div>
+
+          {{ delete.modal('/admin/users', user) }}
         </div>
 
       {% endfor %}
