@@ -4,8 +4,22 @@ const mailer = require('../../lib/mailer');
 const User = require('../models/User');
 
 const UserController = {
-  index(request, response) {
-    return response.render('private/users/index');
+  async index(request, response) {
+    try {
+      const userDB = new User();
+      const users = await userDB.find();
+
+      return response.render('private/users/index', { users });
+    } catch (err) {
+      console.log(err);
+
+      return response.render('private/users/index', {
+        toast: {
+          status: 'error',
+          message: 'Sistema indisponível no momento.'
+        }
+      });
+    }
   },
   create(request, response) {
     return response.render('private/users/create');

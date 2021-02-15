@@ -1,5 +1,4 @@
 {% extends '../layout.njk' %}
-{% import './fields.njk' as profile %}
 
 {% block subTitle %}
   <title>Página de Usuários</title>
@@ -17,77 +16,23 @@
     </div>
 
     <div class="users">
-      <div class="user">
-        <strong>Rodrigo Silvério</strong>
-        <span>r.souza@gmail.com</span>
 
-        <div class="action-buttons">
-          <button class="btn-no-background">
-            <a href="/admin/users/update">Editar</a>
-          </button>
-          <button class="btn-no-background">Remover</button>
+      {% for user in users %}
+
+        <div class="user">
+          <strong>{{ user.name }}</strong>
+          <span>{{ user.email }}</span>
+
+          <div class="action-buttons">
+            <button class="btn-no-background">
+              <a href="/admin/users/update/{{ user.id }}">Editar</a>
+            </button>
+            <button class="btn-no-background">Remover</button>
+          </div>
         </div>
-      </div>
 
-      <div class="user">
-        <strong>Rodrigo Silvério</strong>
-        <span>r.souza@gmail.com</span>
+      {% endfor %}
 
-        <div class="action-buttons">
-          <button class="btn-no-background">
-            <a href="/admin/users/update">Editar</a>
-          </button>
-          <button class="btn-no-background">Remover</button>
-        </div>
-      </div>
-
-      <div class="user">
-        <strong>Rodrigo Silvério</strong>
-        <span>r.souza@gmail.com</span>
-
-        <div class="action-buttons">
-          <button class="btn-no-background">
-            <a href="/admin/users/update">Editar</a>
-          </button>
-          <button class="btn-no-background">Remover</button>
-        </div>
-      </div>
-
-      <div class="user">
-        <strong>Rodrigo Silvério</strong>
-        <span>r.souza@gmail.com</span>
-
-        <div class="action-buttons">
-          <button class="btn-no-background">
-            <a href="/admin/users/update">Editar</a>
-          </button>
-          <button class="btn-no-background">Remover</button>
-        </div>
-      </div>
-
-      <div class="user">
-        <strong>Rodrigo Silvério</strong>
-        <span>r.souza@gmail.com</span>
-
-        <div class="action-buttons">
-          <button class="btn-no-background">
-            <a href="/admin/users/update">Editar</a>
-          </button>
-          <button class="btn-no-background">Remover</button>
-        </div>
-      </div>
-
-      <div class="user">
-        <strong>Rodrigo Silvério</strong>
-        <span>r.souza@gmail.com</span>
-
-        <div class="action-buttons">
-          <button class="btn-no-background">
-            <a href="/admin/users/update">Editar</a>
-          </button>
-          <button class="btn-no-background">Remover</button>
-        </div>
-      </div>
     </div>
   </section>
 
