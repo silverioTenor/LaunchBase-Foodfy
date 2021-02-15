@@ -48,3 +48,7 @@
 .message-container.success {
   background: #01B12A;
 }
+
+.message-container.error {
+  background: #FF3131;
+}

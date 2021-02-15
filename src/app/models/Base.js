@@ -30,6 +30,11 @@ class Base {
       });
 
       const results = await db.query(sql);
+
+      if (results.rows.length <= 0) {
+        throw new Error(`${this.table} not found!`);
+      }
+
       return results.rows[0];
     } catch (err) {
       throw new Error(`Search error: ${err}`);

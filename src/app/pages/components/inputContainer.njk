@@ -1,7 +1,7 @@
-{% macro input(type, name, placeholder) %}
+{% macro input(type, name, value, placeholder) %}
 
   <div class="input-container">
-    <input type="{{ type }}" name="{{ name }}" placeholder="{{ placeholder }}"/>
+    <input type="{{ type }}" name="{{ name }}" value="{{ value }}" placeholder="{{ placeholder }}"/>
   </div>
 
 {% endmacro %}
