@@ -15,5 +15,6 @@ adminRoutes.get('/users/create/', UserController.create);
 adminRoutes.get('/users/update/:id', UserController.update);
 adminRoutes.post('/users/', UserValidator.post, UserController.post);
 adminRoutes.put('/users/', UserValidator.put, UserController.put);
+adminRoutes.delete('/users/', UserController.delete);
 
 module.exports = adminRoutes;

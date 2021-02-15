@@ -7,7 +7,7 @@
         Deseja continuar?</h2>
 
       <div class="actions-buttons">
-        <form action="{{ route }}?_method=DELETE">
+        <form method="POST" action="{{ route }}?_method=DELETE">
           <input type="hidden" name="id" value="{{ user.id }}"/>
           <button class="remove-now" type="submit">Sim</button>
         </form>

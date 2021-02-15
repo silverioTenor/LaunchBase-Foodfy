@@ -94,7 +94,7 @@ class Base {
 
       return await db.query(sql);
     } catch (err) {
-      throw new Error(`Error saving: ${err}`);
+      throw new Error(`Error updating: ${err}`);
     }
   }
 
@@ -104,7 +104,7 @@ class Base {
 
       return await db.query(sql);
     } catch (err) {
-      throw new Error(`Error saving: ${err}`);
+      throw new Error(`Error deleting: ${err}`);
     }
   }
 }
