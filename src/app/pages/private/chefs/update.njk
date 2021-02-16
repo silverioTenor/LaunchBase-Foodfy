@@ -7,6 +7,8 @@
 
 {% block content %}
 
-  {{ chef.fields('Editando chef', true, false) }}
+  <form class="admin-container" method="POST" action="/admin/chefs?_method=PUT" enctype="multipart/form-data">
+    {{ chef.fields('Editando chef', true, false) }}
+  </form>
 
 {% endblock content %}

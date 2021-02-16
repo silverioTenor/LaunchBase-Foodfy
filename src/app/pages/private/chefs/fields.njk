@@ -1,36 +1,34 @@
 {% import '../../components/inputContainer.njk' as field %}
+{% import '../../components/photosUploadContainer.njk' as container %}
 
 {% macro fields(title, isDelete, hasAddInputButton) %}
 
-  <form class="admin-container" method="POST" action="?">
-    <div class="header-section">
-      <h1>{{ title }}</h1>
+  <div class="header-section">
+    <h1>{{ title }}</h1>
 
-      <div class="header-buttons">
-        {% if isDelete %}
-          <button class="btn-delete" type="button">Deletar</button>
-        {% endif %}
+    <div class="header-buttons">
+      {% if isDelete %}
+        <button class="btn-delete" type="button">Deletar</button>
+      {% endif %}
 
-        <div class="login-buttons">
-          <button type="submit">Salvar chef</button>
-        </div>
+      <div class="login-buttons">
+        <button type="submit">Salvar chef</button>
       </div>
     </div>
+  </div>
 
-    <div id="form-recipe">
-      <div class="field-container">
-        <label for="name">Nome</label>
+  <div id="form-chef">
 
-        {{ field.input('text', 'name', 'Nome do chef') }}
-      </div>
-
-      <div class="field-container">
-        <label for="name">Avatar</label>
-
-        {{ field.input('text', 'avatar_url', 'http://exemplo.com.br') }}
-      </div>
-
+    <div class="field-container photo-container">
+      {{ container.photos(user, 1) }}
     </div>
-  </form>
+
+    <div class="field-container">
+      <label for="name">Nome</label>
+
+      {{ field.input('text', 'name', '', 'Nome do chef') }}
+    </div>
+
+  </div>
 
 {% endmacro %}

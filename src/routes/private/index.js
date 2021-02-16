@@ -10,6 +10,6 @@ routes.use('/recipes', recipes);
 routes.use('/chefs', chefs);
 
 // Alias
-routes.get('/', (request, response) => response.redirect('/admin/profile'));
+routes.get('/', (request, response) => response.redirect('/admin/chefs'));
 
 module.exports = routes;

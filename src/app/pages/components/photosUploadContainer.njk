@@ -1,0 +1,22 @@
+{% macro photos(user, length) %}
+
+  {% if user.photo %}
+    <div id="photo-preview">
+      <div id="{{ user.photo.id }}" class="photo" onclick="PhotosUpload.removerAvatar(event)">
+        <img src="{{ user.photo.path }}" alt="{{ user.name }}"/>
+        <i class="material-icons" onclick="PhotosUpload.countRemovedPhotos(event)">close</i>
+      </div>
+    </div>
+  {% else %}
+    <div id="photo-preview"></div>
+  {% endif %}
+
+  <button type="button" class="choose">
+    <input type="file" name="photo" accept="image/*" title="" onchange="PhotosUpload.handleFileInput(event, length)"/>
+
+    Escolher photo
+  </button>
+
+  <input type="hidden" name="removedPhotos">
+
+{% endmacro %}
