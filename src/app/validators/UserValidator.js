@@ -1,24 +1,11 @@
 const User = require('../models/User');
 
-const CheckFields = {
-  verify(body) {
-    const keys = Object.keys(body);
-
-    keys.forEach(key => {
-      if (body[key] === '' && key !== 'removedPhotos' && body[key !== 'isAdmin']) {
-        return {
-          status: 'error',
-          message: 'Preencha os campos corretamente'
-        }
-      }
-    });
-  }
-}
+const BaseValidator = require('./BaseValidator');
 
 const UserValidator = {
   async post(request, response, next) {
     try {
-      let toast = CheckFields.verify(request.body);
+      let toast = BaseValidator.verify(request.body);
 
       if (toast) return response.render('private/users/create', {
         user: request.body,
@@ -62,7 +49,7 @@ const UserValidator = {
   },
   async put(request, response, next) {
     try {
-      let toast = CheckFields.verify(request.body);
+      let toast = BaseValidator.verify(request.body);
 
       if (toast) return response.render('private/users/update', {
         user: request.body,

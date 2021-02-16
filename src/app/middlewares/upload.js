@@ -3,13 +3,12 @@ const multer = require('multer');
 
 const storagePath = path.resolve(__dirname, '..', '..', '..', 'public', 'img', 'storage');
 
-module.exports = {
-  directory: storagePath,
+const upload = multer({
   storage: multer.diskStorage({
-    distination(request, file, cb) {
+    destination: (request, file, cb) => {
       cb(null, storagePath);
     },
-    filename(request, file, cb) {
+    filename: (request, file, cb) => {
       cb(null, `${Date.now().toString()}-${file.originalname}`);
     }
   }),
@@ -20,4 +19,9 @@ module.exports = {
 
     return (isAccepted) ? cb(null, true) : cb(null, false);
   }
+});
+
+module.exports = {
+  directory: storagePath,
+  upload
 };

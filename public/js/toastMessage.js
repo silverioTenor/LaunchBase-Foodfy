@@ -7,7 +7,7 @@ const ToastMessage = {
     }
     setTimeout(() => {
       message.add('dismiss');
-    }, 3000);
+    }, 4000);
   }
 }
 
