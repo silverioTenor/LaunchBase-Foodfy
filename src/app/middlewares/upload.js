@@ -1,10 +1,13 @@
 const path = require('path');
 const multer = require('multer');
 
+const storagePath = path.resolve(__dirname, '..', '..', '..', 'public', 'img', 'storage');
+
 module.exports = {
+  directory: storagePath,
   storage: multer.diskStorage({
     distination(request, file, cb) {
-      cb(null, path.resolve(__dirname, '..', '..', '..', 'public', 'img', 'storage'));
+      cb(null, storagePath);
     },
     filename(request, file, cb) {
       cb(null, `${Date.now().toString()}-${file.originalname}`);
