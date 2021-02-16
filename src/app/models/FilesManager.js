@@ -1,10 +1,11 @@
 const Base = require('./Base');
 
-class User {
+class FilesManager extends Base {
 
   constructor() {
-    this.table = 'filesManager';
+    super();
+    this.table = 'files_manager';
   }
 }
 
-module.exports = User;
+module.exports = FilesManager;
