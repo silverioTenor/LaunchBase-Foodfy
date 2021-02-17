@@ -30,7 +30,8 @@ CREATE TABLE "recipes" (
 CREATE TABLE "chefs" (
   "id" SERIAL PRIMARY KEY,
   "name" text NOT NULL,
-  "created_at" timestamp DEFAULT now()
+  "created_at" timestamp DEFAULT now(),
+  "updated_at" timestamp DEFAULT now()
 );
 
 CREATE TABLE "files_manager" (
