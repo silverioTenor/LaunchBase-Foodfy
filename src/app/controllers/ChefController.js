@@ -1,14 +1,14 @@
-const BaseController = require('./BaseController');
 const Chef = require('../models/Chef');
-
 const CreateFilesService = require('../services/CreateFiles.service');
+
+const { getChefList, getChefShow } = require('../utils/keepChefs');
 
 const ChefController = {
   async index(request, response) {
     try {
       const base_url = `${request.protocol}://${request.headers.host}`;
 
-      const chefs = await BaseController.chefList(base_url);
+      const chefs = await getChefList(base_url);
 
       return response.render('private/chefs/index', { chefs });
     } catch (err) {
@@ -54,8 +54,25 @@ const ChefController = {
       });
     }
   },
-  show(request, response) {
-    return response.render('private/chefs/show');
+  async show(request, response) {
+    try {
+      const { id } = request.params;
+
+      const base_url = `${request.protocol}://${request.headers.host}`;
+
+      const chef = await getChefShow(base_url, id);
+
+      return response.render('private/chefs/show', { chef });
+    } catch (err) {
+      console.log(err);
+
+      return response.render('private/chefs/index', {
+        toast: {
+          status: 'error',
+          message: 'Sistema indisponível no momento!'
+        }
+      });
+    }
   },
   update(request, response) {
     return response.render('private/chefs/update');

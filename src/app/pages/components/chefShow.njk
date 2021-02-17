@@ -1,20 +1,21 @@
-{% macro chef(hasButton, link) %}
+{% macro chef(hasButton, link, chef) %}
 
   <section class="chef-container-show">
     <div class="header-section">
-      <h1>Chef: Júlia Kinoto</h1>
+      <h1>Chef:
+        {{ chef.name }}</h1>
 
       {% if hasButton %}
-        <a href="/admin/chefs/update">
+        <a href="/admin/chefs/update/{{ chef.id }}">
           <button>Editar</button>
         </a>
       {% endif %}
     </div>
 
     <div class="chef-content">
-      <img src="/img/common/burger.png" alt="Burger"/>
+      <img src="{{ chef.image }}" alt="{{ chef.name }}"/>
 
-      <h1>Júlia Kinoto</h1>
+      <h1>{{ chef.name }}</h1>
       <span>4 receitas</span>
     </div>
 

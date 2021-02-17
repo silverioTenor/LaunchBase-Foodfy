@@ -1,4 +1,4 @@
-const BaseController = require('./BaseController');
+const { getChefList, getChefShow } = require('../utils/keepChefs');
 
 const HomeController = {
   home(request, response) {
@@ -17,7 +17,7 @@ const HomeController = {
     try {
       const base_url = `${request.protocol}://${request.headers.host}`;
 
-      const chefs = await BaseController.chefList(base_url);
+      const chefs = await getChefList(base_url);
 
       return response.render('public/chefs/index', { chefs });
     } catch (err) {
@@ -31,8 +31,25 @@ const HomeController = {
       });
     }
   },
-  chefShow(request, response) {
-    return response.render('public/chefs/show');
+  async chefShow(request, response) {
+    try {
+      const { id } = request.params;
+
+      const base_url = `${request.protocol}://${request.headers.host}`;
+
+      const chef = await getChefShow(base_url, id);
+
+      return response.render('public/chefs/show', { chef });
+    } catch (err) {
+      console.log(err);
+
+      return response.render('public/chefs/index', {
+        toast: {
+          status: 'error',
+          message: 'Sistema indisponível no momento!'
+        }
+      });
+    }
   },
 }
 

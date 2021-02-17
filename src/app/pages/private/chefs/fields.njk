@@ -1,7 +1,7 @@
 {% import '../../components/inputContainer.njk' as field %}
 {% import '../../components/photosUploadContainer.njk' as container %}
 
-{% macro fields(title, isDelete, hasAddInputButton) %}
+{% macro fields(title, isDelete, hasAddInputButton, chef) %}
 
   <div class="header-section">
     <h1>{{ title }}</h1>
@@ -20,13 +20,13 @@
   <div id="form-chef">
 
     <div class="field-container photo-container">
-      {{ container.photos(user, 1) }}
+      {{ container.photos(chef, 1) }}
     </div>
 
     <div class="field-container">
       <label for="name">Nome</label>
 
-      {{ field.input('text', 'name', '', 'Nome do chef') }}
+      {{ field.input('text', 'name', chef.name, 'Nome do chef') }}
     </div>
 
   </div>
