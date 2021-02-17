@@ -46,6 +46,10 @@
   font-weight: 700;
 }
 
+.message-container.info {
+  background: #13a8ec;
+}
+
 .message-container.success {
   background: #01B12A;
 }
