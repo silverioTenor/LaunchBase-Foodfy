@@ -3,9 +3,16 @@ const { urlencoded, static } = require('express');
 const nunjucks = require('nunjucks');
 const methodOverride = require('method-override');
 
+const session = require('./config/session');
 const routes = require('./routes');
 
 const server = express();
+
+server.use(session);
+server.use((request, response, next) => {
+  response.locals.session = request.session;
+  next();
+})
 
 server.use(urlencoded({ extended: true }));
 server.use(static('public'));
