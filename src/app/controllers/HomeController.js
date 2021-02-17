@@ -1,3 +1,5 @@
+const BaseController = require('./BaseController');
+
 const HomeController = {
   home(request, response) {
     return response.render('public/home');
@@ -11,8 +13,23 @@ const HomeController = {
   about(request, response) {
     return response.render('public/about');
   },
-  chefs(request, response) {
-    return response.render('public/chefs/index');
+  async chefs(request, response) {
+    try {
+      const base_url = `${request.protocol}://${request.headers.host}`;
+
+      const chefs = await BaseController.chefList(base_url);
+
+      return response.render('public/chefs/index', { chefs });
+    } catch (err) {
+      console.log(err);
+
+      return response.render('public/chefs/index', {
+        toast: {
+          status: 'error',
+          message: 'Sistema indisponível no momento!'
+        }
+      });
+    }
   },
   chefShow(request, response) {
     return response.render('public/chefs/show');

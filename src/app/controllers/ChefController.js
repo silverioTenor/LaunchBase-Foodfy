@@ -1,34 +1,16 @@
+const BaseController = require('./BaseController');
 const Chef = require('../models/Chef');
 
 const CreateFilesService = require('../services/CreateFiles.service');
-const GetFilesService = require('../services/GetFiles.service');
 
 const ChefController = {
   async index(request, response) {
     try {
-      const chefDB = new Chef();
-      const chefs = await chefDB.find();
+      const base_url = `${request.protocol}://${request.headers.host}`;
 
-      const chefsWithImagesPromise = chefs.map(async chef => {
-        const values = {
-          id: chef.id,
-          column: 'chef_id'
-        };
+      const chefs = await BaseController.chefList(base_url);
 
-        const getFiles = new GetFilesService();
-        const { image } = await getFiles.execute(values);
-
-        const newChef = {
-          ...chef,
-          image: `${request.protocol}://${request.headers.host}${image}`
-        };
-
-        return newChef;
-      });
-
-      const chefsWithImages = await Promise.all(chefsWithImagesPromise);
-
-      return response.render('private/chefs/index', { chefs: chefsWithImages });
+      return response.render('private/chefs/index', { chefs });
     } catch (err) {
       console.log(err);
 
