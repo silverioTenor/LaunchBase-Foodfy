@@ -8,7 +8,7 @@ class Base {
 
   async find() {
     try {
-      let sql = `SELECT id, name, email FROM ${this.table}`;
+      let sql = `SELECT * FROM ${this.table}`;
 
       const results = await db.query(sql);
 

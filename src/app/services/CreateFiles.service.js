@@ -1,7 +1,7 @@
 const FilesManager = require('../models/FilesManager');
 const File = require('../models/File');
 
-class CreateFileService {
+class CreateFilesService {
   async execute(fields, path) {
     try {
       const filesManagerDB = new FilesManager();
@@ -17,4 +17,4 @@ class CreateFileService {
   }
 }
 
-module.exports = CreateFileService;
+module.exports = CreateFilesService;

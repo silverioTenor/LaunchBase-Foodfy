@@ -1,77 +1,21 @@
-{% macro chefs(link) %}
+{% macro chefs(link, chefs) %}
 
   <div class="chefs">
-    <div class="chef">
-      <img src="/img/common/burger.png" alt="Búrger"/>
+    {% for chef in chefs %}
 
-      <div class="chef-content">
-        <strong>Jorge Relato</strong>
+      <div class="chef">
+        <img src="{{ chef.image }}" alt="{{ chef.name }}"/>
 
-        <button class="btn-no-background">
-          <a class="btn-no-background" href="{{ link }}">Visualizar</a>
-        </button>
+        <div class="chef-content">
+          <strong>{{ chef.name }}</strong>
+
+          <button class="btn-no-background">
+            <a class="btn-no-background" href="{{ link }}">Visualizar</a>
+          </button>
+        </div>
       </div>
-    </div>
 
-    <div class="chef">
-      <img src="/img/common/pizza.png" alt="Pizza 4 estações"/>
-
-      <div class="chef-content">
-        <strong>Fabiana Melo</strong>
-
-        <button class="btn-no-background">
-          <a class="btn-no-background" href="{{ link }}">Visualizar</a>
-        </button>
-      </div>
-    </div>
-
-    <div class="chef">
-      <img src="/img/common/espaguete.png" alt="Espaguete"/>
-
-      <div class="chef-content">
-        <strong>Júlia Kinoto</strong>
-
-        <button class="btn-no-background">
-          <a class="btn-no-background" href="{{ link }}">Visualizar</a>
-        </button>
-      </div>
-    </div>
-
-    <div class="chef">
-      <img src="/img/common/lasanha.png" alt="Lasanha"/>
-
-      <div class="chef-content">
-        <strong>Juliano Vieira</strong>
-
-        <button class="btn-no-background">
-          <a class="btn-no-background" href="{{ link }}">Visualizar</a>
-        </button>
-      </div>
-    </div>
-
-    <div class="chef">
-      <img src="/img/common/doce.png" alt="Docinho"/>
-
-      <div class="chef-content">
-        <strong>Ricardo Govea</strong>
-
-        <button class="btn-no-background">
-          <a class="btn-no-background" href="{{ link }}">Visualizar</a>
-        </button>
-      </div>
-    </div>
-
-    <div class="chef">
-      <img src="/img/common/asinhas.png" alt="Asinha"/>
-
-      <div class="chef-content">
-        <strong>Vania Steroski</strong>
-
-        <button class="btn-no-background">
-          <a class="btn-no-background" href="{{ link }}">Visualizar</a>
-        </button>
-      </div>
-    </div>
+    {% endfor %}
   </div>
 
 {% endmacro %}
