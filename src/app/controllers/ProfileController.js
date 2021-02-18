@@ -1,6 +1,7 @@
 const User = require('../models/User');
 
-const ProfileController = {
+class ProfileController {
+
   async profile(request, response) {
     try {
       const { id } = request.params;
@@ -21,7 +22,7 @@ const ProfileController = {
         }
       });
     }
-  },
+  }
 };
 
 module.exports = ProfileController;

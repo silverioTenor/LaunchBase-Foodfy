@@ -1,17 +1,20 @@
 const { Router } = require('express');
 const { upload } = require('../../app/middlewares/upload');
 
+const chefRoutes = Router();
+
 const ChefController = require('../../app/controllers/ChefController');
 const ChefValidator = require('../../app/validators/ChefValidator');
 
-const chefRoutes = Router();
+const chefController = new ChefController();
+const chefValidator = new ChefValidator();
 
-chefRoutes.get('/', ChefController.index);
-chefRoutes.get('/create', ChefController.create);
-chefRoutes.get('/show/:id', ChefController.show);
-chefRoutes.get('/update', ChefController.update);
-chefRoutes.post('/', upload.array('photo', 1), ChefValidator.post, ChefController.post);
-// chefRoutes.put('/', upload.array('photo', 1), ChefValidator.put, ChefController.put);
-// chefRoutes.delete('/', ChefController.create);
+chefRoutes.get('/', chefController.index);
+chefRoutes.get('/create', chefController.create);
+chefRoutes.get('/show/:id', chefController.show);
+chefRoutes.get('/update', chefController.update);
+chefRoutes.post('/', upload.array('photo', 1), chefValidator.post, chefController.post);
+// chefRoutes.put('/', upload.array('photo', 1), chefValidator.put, chefController.put);
+// chefRoutes.delete('/', chefController.create);
 
 module.exports = chefRoutes;

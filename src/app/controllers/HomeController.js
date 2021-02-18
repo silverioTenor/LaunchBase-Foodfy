@@ -1,18 +1,23 @@
 const { getChefList, getChefShow } = require('../utils/keepChefs');
 
-const HomeController = {
+class HomeController {
+
   home(request, response) {
     return response.render('public/home');
-  },
+  }
+
   recipes(request, response) {
     return response.render('public/recipes/index');
-  },
+  }
+
   recipeShow(request, response) {
     return response.render('public/recipes/show');
-  },
+  }
+
   about(request, response) {
     return response.render('public/about');
-  },
+  }
+
   async chefs(request, response) {
     try {
       const base_url = `${request.protocol}://${request.headers.host}`;
@@ -30,7 +35,8 @@ const HomeController = {
         }
       });
     }
-  },
+  }
+
   async chefShow(request, response) {
     try {
       const { id } = request.params;
@@ -50,7 +56,7 @@ const HomeController = {
         }
       });
     }
-  },
+  }
 }
 
 module.exports = HomeController;

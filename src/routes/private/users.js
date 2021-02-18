@@ -1,20 +1,23 @@
 const { Router } = require('express');
 
-const ProfileController = require('../../app/controllers/ProfileController');
-const UserController = require('../../app/controllers/UserController');
-
-const UserValidator = require('../../app/validators/UserValidator');
-
 const adminRoutes = Router();
 
-adminRoutes.get('/profile/:id', ProfileController.profile);
-// adminRoutes.put('/profile/:id', ProfileController.put);
+const ProfileController = require('../../app/controllers/ProfileController');
+const UserController = require('../../app/controllers/UserController');
+const UserValidator = require('../../app/validators/UserValidator');
 
-adminRoutes.get('/users/', UserController.index);
-adminRoutes.get('/users/create/', UserController.create);
-adminRoutes.get('/users/update/:id', UserController.update);
-adminRoutes.post('/users/', UserValidator.post, UserController.post);
-adminRoutes.put('/users/', UserValidator.put, UserController.put);
-adminRoutes.delete('/users/', UserController.delete);
+const profileController = new ProfileController();
+const userController = new UserController();
+const userValidator = new UserValidator();
+
+adminRoutes.get('/profile/:id', profileController.profile);
+// adminRoutes.put('/profile/:id', profileController.put);
+
+adminRoutes.get('/users/', userController.index);
+adminRoutes.get('/users/create/', userController.create);
+adminRoutes.get('/users/update/:id', userController.update);
+adminRoutes.post('/users/', userValidator.post, userController.post);
+adminRoutes.put('/users/', userValidator.put, userController.put);
+adminRoutes.delete('/users/', userController.delete);
 
 module.exports = adminRoutes;

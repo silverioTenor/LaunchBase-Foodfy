@@ -5,11 +5,14 @@ const sessionRoutes = Router();
 const SessionController = require('../app/controllers/SessionController');
 const SessionValidator = require('../app/validators/SessionValidator');
 
-sessionRoutes.get('/login', SessionController.loginForm);
-sessionRoutes.post('/login', SessionValidator.login, SessionController.login);
+const sessionController = new SessionController();
+const sessionValidator = new SessionValidator();
 
-sessionRoutes.get('/forgot-password', SessionController.forgotForm);
-sessionRoutes.get('/password-reset', SessionController.resetForm);
-sessionRoutes.post('/password-reset', SessionValidator.reset, SessionController.reset);
+sessionRoutes.get('/login', sessionController.loginForm);
+sessionRoutes.post('/login', sessionValidator.login, sessionController.login);
+
+sessionRoutes.get('/forgot-password', sessionController.forgotForm);
+sessionRoutes.get('/password-reset', sessionController.resetForm);
+sessionRoutes.post('/password-reset', sessionValidator.reset, sessionController.reset);
 
 module.exports = sessionRoutes;

@@ -1,12 +1,14 @@
 const { Router } = require('express');
 
-const RecipeController = require('../../app/controllers/RecipeController');
-
 const recipeRoutes = Router();
 
-recipeRoutes.get('/', RecipeController.index);
-recipeRoutes.get('/create', RecipeController.create);
-recipeRoutes.get('/show', RecipeController.show);
-recipeRoutes.get('/update', RecipeController.update);
+const RecipeController = require('../../app/controllers/RecipeController');
+
+const recipeController = new RecipeController();
+
+recipeRoutes.get('/', recipeController.index);
+recipeRoutes.get('/create', recipeController.create);
+recipeRoutes.get('/show', recipeController.show);
+recipeRoutes.get('/update', recipeController.update);
 
 module.exports = recipeRoutes;

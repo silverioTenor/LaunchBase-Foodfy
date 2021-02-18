@@ -2,10 +2,13 @@ const User = require('../models/User');
 
 const BaseValidator = require('./BaseValidator');
 
-const UserValidator = {
+const baseValidator = new BaseValidator();
+
+class UserValidator {
+
   async post(request, response, next) {
     try {
-      let toast = BaseValidator.verify(request.body);
+      let toast = baseValidator.verify(request.body);
 
       if (toast) return response.render('private/users/create', {
         user: request.body,
@@ -46,10 +49,11 @@ const UserValidator = {
         }
       });
     }
-  },
+  }
+
   async put(request, response, next) {
     try {
-      let toast = BaseValidator.verify(request.body);
+      let toast = baseValidator.verify(request.body);
 
       if (toast) return response.render('private/users/update', {
         user: request.body,

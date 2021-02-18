@@ -3,7 +3,8 @@ const CreateFilesService = require('../services/CreateFiles.service');
 
 const { getChefList, getChefShow } = require('../utils/keepChefs');
 
-const ChefController = {
+class ChefController {
+
   async index(request, response) {
     try {
       const base_url = `${request.protocol}://${request.headers.host}`;
@@ -21,10 +22,12 @@ const ChefController = {
         }
       });
     }
-  },
+  }
+
   create(request, response) {
     return response.render('private/chefs/create');
-  },
+  }
+
   async post(request, response) {
     try {
       const { name } = request.body;
@@ -53,7 +56,8 @@ const ChefController = {
         }
       });
     }
-  },
+  }
+
   async show(request, response) {
     try {
       const { id } = request.params;
@@ -73,13 +77,16 @@ const ChefController = {
         }
       });
     }
-  },
+  }
+
   update(request, response) {
     return response.render('private/chefs/update');
-  },
+  }
+
   put(request, response) {
     return response.render('private/chefs/update');
-  },
+  }
+
   delete(request, response) {
     return response.render('private/chefs/update');
   }

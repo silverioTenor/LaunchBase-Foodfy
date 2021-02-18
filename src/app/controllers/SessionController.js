@@ -3,10 +3,12 @@ const User = require('../models/User');
 
 const CreateTokenToResetPasswordService = require('../services/CreateTokenToResetPassword.service');
 
-const SessionController = {
+class SessionController {
+
   loginForm(request, response) {
     return response.render('session/login');
-  },
+  }
+
   async login(request, response) {
     try {
       const user = request.user;
@@ -44,20 +46,25 @@ const SessionController = {
 
     request.session.user = request.user;
     return res.redirect(`/admin/profile/${request.user.userID}`);
-  },
+  }
+
   logout(request, response) {
     return
-  },
+  }
+
   forgotForm(request, response) {
     return response.render('session/forgot');
-  },
+  }
+
   forgot(request, response) {
     return
-  },
+  }
+
   resetForm(request, response) {
     const { token } = request.query;
     return response.render('session/reset', { token });
-  },
+  }
+
   async reset(request, response) {
     try {
       const { user } = request;
@@ -89,7 +96,7 @@ const SessionController = {
         }
       });
     }
-  },
+  }
 }
 
 module.exports = SessionController;

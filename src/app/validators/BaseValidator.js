@@ -1,4 +1,5 @@
-const BaseValidator = {
+class BaseValidator {
+
   verify(body) {
     const keys = Object.keys(body);
 

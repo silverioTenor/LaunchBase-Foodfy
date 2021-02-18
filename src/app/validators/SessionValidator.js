@@ -3,10 +3,13 @@ const { compare } = require('bcryptjs');
 const BaseValidator = require('./BaseValidator');
 const User = require('../models/User');
 
-const SessionValidator = {
+const baseValidator = new BaseValidator();
+
+class SessionValidator {
+
   async login(request, response, next) {
     try {
-      const toast = BaseValidator.verify(request.body);
+      const toast = baseValidator.verify(request.body);
 
       if (toast) return response.render('session/login', { toast });
 
@@ -52,10 +55,11 @@ const SessionValidator = {
         }
       });
     }
-  },
+  }
+
   async reset(request, response, next) {
     try {
-      const toast = BaseValidator.verify(request.body);
+      const toast = baseValidator.verify(request.body);
 
       if (toast) return response.render('session/reset', { toast });
 
@@ -108,7 +112,7 @@ const SessionValidator = {
         }
       });
     }
-  },
+  }
 }
 
 module.exports = SessionValidator;

@@ -3,7 +3,8 @@ const mailer = require('../../lib/mailer');
 
 const User = require('../models/User');
 
-const UserController = {
+class UserController {
+
   async index(request, response) {
     try {
       const userDB = new User();
@@ -20,10 +21,12 @@ const UserController = {
         }
       });
     }
-  },
+  }
+
   create(request, response) {
     return response.render('private/users/create');
-  },
+  }
+
   async post(request, response) {
     try {
       const { name, email, is_admin } = request.bodyValidated;
@@ -65,7 +68,8 @@ const UserController = {
         }
       });
     }
-  },
+  }
+
   async update(request, response) {
     try {
       const { id } = request.params;
@@ -84,7 +88,8 @@ const UserController = {
         }
       });
     }
-  },
+  }
+
   async put(request, response) {
     const { id, name, email } = request.bodyValidated;
 
@@ -112,7 +117,8 @@ const UserController = {
         }
       });
     }
-  },
+  }
+
   async delete(request, response) {
     try {
       const { id } = request.body;

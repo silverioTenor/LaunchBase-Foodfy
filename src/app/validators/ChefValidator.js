@@ -1,8 +1,11 @@
 const BaseValidator = require('./BaseValidator');
 
-const ChefValidator = {
+const baseValidator = new BaseValidator();
+
+class ChefValidator {
+
   post(request, response, next) {
-    const toast = BaseValidator.verify(request.body);
+    const toast = baseValidator.verify(request.body);
 
     if (toast) return response.render('private/chefs/create', { toast });
 
@@ -19,7 +22,7 @@ const ChefValidator = {
     };
 
     next();
-  },
+  }
 }
 
 module.exports = ChefValidator;
