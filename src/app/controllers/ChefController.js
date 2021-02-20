@@ -79,8 +79,25 @@ class ChefController {
     }
   }
 
-  update(request, response) {
-    return response.render('private/chefs/update');
+  async update(request, response) {
+    try {
+      const { id } = request.params;
+
+      const base_url = `${request.protocol}://${request.headers.host}`;
+
+      const chef = await getChefShow(base_url, id);
+
+      return response.render('private/chefs/update', { chef });
+    } catch (err) {
+      console.log(err);
+
+      return response.render('private/chefs/index', {
+        toast: {
+          status: 'error',
+          message: 'Sistema indisponível! Tente novamente mais tarde.'
+        }
+      });
+    }
   }
 
   put(request, response) {

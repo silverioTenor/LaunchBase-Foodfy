@@ -4,7 +4,7 @@ const db = new Pool({
   user: 'postgres',
   password: 'docker',
   host: 'localhost',
-  port: '5433',
+  port: '5432',
   database: 'db_foodfy'
 });
 

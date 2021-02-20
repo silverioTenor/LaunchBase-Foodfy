@@ -1,5 +1,5 @@
 {% extends '../layout.njk' %}
-{% import './fields.njk' as chef %}
+{% import './fields.njk' as chefContainer %}
 
 {% block subTitle %}
   <title>Página de Edição</title>
@@ -8,7 +8,9 @@
 {% block content %}
 
   <form class="admin-container" method="POST" action="/admin/chefs?_method=PUT" enctype="multipart/form-data">
-    {{ chef.fields('Editando chef', true, false) }}
+    <input type="hidden" name="id" value="{{ chef.id }}"/>
+
+    {{ chefContainer.fields('Editando chef', chef, true, false) }}
   </form>
 
 {% endblock content %}

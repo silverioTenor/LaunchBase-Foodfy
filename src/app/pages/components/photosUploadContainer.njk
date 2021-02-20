@@ -1,9 +1,9 @@
-{% macro photos(user, length) %}
+{% macro photos(entity, length) %}
 
-  {% if user.photo %}
+  {% if entity.image %}
     <div id="photo-preview">
-      <div id="{{ user.photo.id }}" class="photo" onclick="PhotosUpload.removerAvatar(event)">
-        <img src="{{ user.photo.path }}" alt="{{ user.name }}"/>
+      <div id="{{ entity.id }}" class="photo" onclick="PhotosUpload.removerAvatar(event)">
+        <img src="{{ entity.image }}" alt="{{ entity.name }}"/>
         <i class="material-icons" onclick="PhotosUpload.countRemovedPhotos(event)">close</i>
       </div>
     </div>
