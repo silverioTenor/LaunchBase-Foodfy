@@ -10,8 +10,6 @@ class CreateFilesService {
       const filesDB = new File();
       await filesDB.save([path, fmID]);
     } catch (err) {
-      console.log(err);
-
       throw new Error(err);
     }
   }

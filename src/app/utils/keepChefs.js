@@ -3,7 +3,7 @@ const Chef = require('../models/Chef');
 const GetFilesService = require('../services/GetFiles.service');
 
 module.exports = {
-  async getChefList(base_url) {
+  async getManyChefs(base_url) {
     try {
       const chefDB = new Chef();
       const chefs = await chefDB.find();
@@ -15,11 +15,11 @@ module.exports = {
         };
 
         const getFiles = new GetFilesService();
-        const { image } = await getFiles.execute(values);
+        const { images } = await getFiles.execute(values, base_url);
 
         const newChef = {
           ...chef,
-          image: `${base_url}${image}`
+          image: images[0].path
         };
 
         return newChef;
@@ -29,12 +29,10 @@ module.exports = {
 
       return chefsWithImages;
     } catch (err) {
-      console.log(err);
-
       throw new Error(err);
     }
   },
-  async getChefShow(base_url, id) {
+  async getOneChef(base_url, id) {
     try {
       const chefDB = new Chef();
       const chef = await chefDB.findByID(id);
@@ -45,17 +43,16 @@ module.exports = {
       };
 
       const getFiles = new GetFilesService();
-      const { image } = await getFiles.execute(values);
+      const { fm_id, images } = await getFiles.execute(values, base_url);
 
       const newChef = {
         ...chef,
-        image: `${base_url}${image}`
+        image: images[0],
+        fm_id,
       };
 
       return newChef;
     } catch (err) {
-      console.log(err);
-
       throw new Error(err);
     }
   },

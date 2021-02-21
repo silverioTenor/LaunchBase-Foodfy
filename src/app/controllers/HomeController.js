@@ -1,4 +1,4 @@
-const { getChefList, getChefShow } = require('../utils/keepChefs');
+const { getManyChefs, getOneChef } = require('../utils/keepChefs');
 
 class HomeController {
 
@@ -22,7 +22,7 @@ class HomeController {
     try {
       const base_url = `${request.protocol}://${request.headers.host}`;
 
-      const chefs = await getChefList(base_url);
+      const chefs = await getManyChefs(base_url);
 
       return response.render('public/chefs/index', { chefs });
     } catch (err) {
@@ -43,7 +43,7 @@ class HomeController {
 
       const base_url = `${request.protocol}://${request.headers.host}`;
 
-      const chef = await getChefShow(base_url, id);
+      const chef = await getOneChef(base_url, id);
 
       return response.render('public/chefs/show', { chef });
     } catch (err) {

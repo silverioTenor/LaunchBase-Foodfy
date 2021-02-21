@@ -47,13 +47,18 @@ class ChefValidator {
           chef: request.body,
           toast: {
             status: 'error',
-            message: 'A foto do chef é obrigatória!'
+            message: 'A foto do chef é obrigatória!',
           }
         });
       }
 
-      request.avatar = {
-        path: [request.files[0].path]
+      const { id, name, removedPhotos } = request.body;
+
+      request.chef = {
+        id,
+        name,
+        removedPhotos,
+        avatar: (request.files[0]?.path) ? [request.files[0].path] : [],
       };
 
       next();

@@ -1,7 +1,10 @@
 const Chef = require('../models/Chef');
-const CreateFilesService = require('../services/CreateFiles.service');
+const File = require('../models/File');
 
-const { getChefList, getChefShow } = require('../utils/keepChefs');
+const CreateFilesService = require('../services/CreateFiles.service');
+const RemoveFilesService = require('../services/RemoveFiles.service');
+
+const { getManyChefs, getOneChef } = require('../utils/keepChefs');
 
 class ChefController {
 
@@ -9,7 +12,7 @@ class ChefController {
     try {
       const base_url = `${request.protocol}://${request.headers.host}`;
 
-      const chefs = await getChefList(base_url);
+      const chefs = await getManyChefs(base_url);
 
       return response.render('private/chefs/index', { chefs });
     } catch (err) {
@@ -64,7 +67,7 @@ class ChefController {
 
       const base_url = `${request.protocol}://${request.headers.host}`;
 
-      const chef = await getChefShow(base_url, id);
+      const chef = await getOneChef(base_url, id);
 
       return response.render('private/chefs/show', { chef });
     } catch (err) {
@@ -85,7 +88,7 @@ class ChefController {
 
       const base_url = `${request.protocol}://${request.headers.host}`;
 
-      const chef = await getChefShow(base_url, id);
+      const chef = await getOneChef(base_url, id);
 
       return response.render('private/chefs/update', { chef });
     } catch (err) {
@@ -100,8 +103,44 @@ class ChefController {
     }
   }
 
-  put(request, response) {
-    return response.render('private/chefs/update');
+  async put(request, response) {
+    try {
+      const { id, name, removedPhotos, avatar } = request.chef;
+
+      const chef = await getOneChef('', id);
+
+      const chefDB = new Chef();
+      await chefDB.update({ id, column: 'id' }, { name });
+
+      if (avatar.length > 0) {
+        const removeFiles = new RemoveFilesService();
+        const unRemovedFiles = await removeFiles.execute({
+          removedPhotos,
+          oldImages: [chef.image]
+        });
+
+        const path = [...unRemovedFiles, ...avatar];
+
+        const filesDB = new File();
+        await filesDB.update([path, chef.fm_id]);
+      }
+
+      return response.render('private/chefs/index', {
+        toast: {
+          status: 'success',
+          message: 'Chef atualizado com sucesso!',
+        }
+      });
+    } catch (err) {
+      console.log(err);
+
+      return response.render('private/chefs/update', {
+        toast: {
+          status: 'error',
+          message: 'Erro inesperado! Tente novamente mais tarde.',
+        }
+      });
+    }
   }
 
   delete(request, response) {

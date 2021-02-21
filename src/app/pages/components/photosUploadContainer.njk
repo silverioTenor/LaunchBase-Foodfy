@@ -2,8 +2,8 @@
 
   {% if entity.image %}
     <div id="photo-preview">
-      <div id="{{ entity.id }}" class="photo" onclick="PhotosUpload.removerAvatar(event)">
-        <img src="{{ entity.image }}" alt="{{ entity.name }}"/>
+      <div id="{{ entity.image.id }}" class="photo" onclick="PhotosUpload.removePhoto(event)">
+        <img src="{{ entity.image.path }}" alt="{{ entity.name }}"/>
         <i class="material-icons" onclick="PhotosUpload.countRemovedPhotos(event)">close</i>
       </div>
     </div>
@@ -14,7 +14,7 @@
   <button type="button" class="choose">
     <input type="file" name="photo" accept="image/*" title="" onchange="PhotosUpload.handleFileInput(event, length)"/>
 
-    Escolher photo
+    Escolher foto
   </button>
 
   <input type="hidden" name="removedPhotos">
