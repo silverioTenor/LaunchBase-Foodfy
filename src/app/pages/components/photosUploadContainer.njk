@@ -4,7 +4,7 @@
     <div id="photo-preview">
       <div id="{{ entity.image.id }}" class="photo" onclick="PhotosUpload.removePhoto(event)">
         <img src="{{ entity.image.path }}" alt="{{ entity.name }}"/>
-        <i class="material-icons" onclick="PhotosUpload.countRemovedPhotos(event)">close</i>
+        <i class="material-icons photo-remove-icon" onclick="PhotosUpload.countRemovedPhotos(event)">close</i>
       </div>
     </div>
   {% else %}
