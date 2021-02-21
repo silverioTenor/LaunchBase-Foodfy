@@ -7,6 +7,8 @@ const PhotosUpload = {
 
     PhotosUpload.input = event.target;
 
+    console.log(uploadLimit);
+
     if (PhotosUpload.hasLimit(event, uploadLimit)) return
 
     Array.from(fileList).forEach(file => {
@@ -19,7 +21,6 @@ const PhotosUpload = {
         image.src = String(reader.result);
 
         const divContainer = PhotosUpload.divConstructor(image);
-        // PhotosUpload.preview.innerHTML = "";
         PhotosUpload.preview.appendChild(divContainer);
       };
 
@@ -42,7 +43,7 @@ const PhotosUpload = {
     const photosDiv = [];
 
     preview.childNodes.forEach(item => {
-      if (item.classList && item.classList.value == "photo") {
+      if (item.classList?.value == "photo") {
         photosDiv.push(item);
       }
     });

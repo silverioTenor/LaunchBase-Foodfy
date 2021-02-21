@@ -1,8 +1,9 @@
 {% import '../../components/inputContainer.njk' as field %}
+{% import '../../components/photosUploadContainer.njk' as container %}
 
 {% macro fields(title, isDelete, hasAddInputButton) %}
 
-  <form class="admin-container" method="POST" action="?">
+  <form class="admin-container" method="POST" action="?" enctype="multipart/form-data">
     <div class="header-section">
       <h1>{{ title }}</h1>
 
@@ -18,10 +19,8 @@
     </div>
 
     <div id="form-recipe">
-      <div class="field-container">
-        <label for="name">Imagem da receita</label>
-
-        {{ field.input('text', 'avatar_url', 'http://exemplo.com.br') }}
+      <div class="field-container photo-recipe-container">
+        {{ container.photos(recipe, 'recipes') }}
       </div>
 
       <div class="field-container">

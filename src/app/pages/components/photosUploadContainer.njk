@@ -1,10 +1,17 @@
-{% macro photos(entity, length) %}
+{% macro photos(entity, uploadLimit) %}
 
   {% if entity.image %}
     <div id="photo-preview">
-      <div id="{{ entity.image.id }}" class="photo" onclick="PhotosUpload.removePhoto(event)">
+      <div 
+        id="{{ entity.image.id }}" 
+        class="photo" 
+        onclick="PhotosUpload.removePhoto(event)"
+      >
         <img src="{{ entity.image.path }}" alt="{{ entity.name }}"/>
-        <i class="material-icons photo-remove-icon" onclick="PhotosUpload.countRemovedPhotos(event)">close</i>
+        <i 
+          class="material-icons photo-remove-icon" 
+          onclick="PhotosUpload.countRemovedPhotos(event)"
+        >close</i>
       </div>
     </div>
   {% else %}
@@ -12,7 +19,18 @@
   {% endif %}
 
   <button type="button" class="choose">
-    <input type="file" name="photo" accept="image/*" title="" onchange="PhotosUpload.handleFileInput(event, length)"/>
+    <input 
+      type="file" 
+      multiple="multiple" 
+      name="photo" 
+      accept="image/*" 
+      title="" 
+      {% if uploadLimit === 'recipes' %}
+        onchange="PhotosUpload.handleFileInput(event, 5)"
+      {% else %}
+        onchange="PhotosUpload.handleFileInput(event, 1)"
+      {% endif %}
+    />
 
     Escolher foto
   </button>
