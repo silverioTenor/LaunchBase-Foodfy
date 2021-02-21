@@ -1,4 +1,4 @@
-{% macro modal(route, user) %}
+{% macro modal(route, entity) %}
 
   <section class="remove-modal-container">
     <div class="remove-modal">
@@ -8,11 +8,11 @@
 
       <div class="actions-buttons">
         <form method="POST" action="{{ route }}?_method=DELETE">
-          <input type="hidden" name="id" value="{{ user.id }}"/>
+          <input type="hidden" name="id" value="{{ entity.id }}"/>
           <button class="remove-now" type="submit">Sim</button>
         </form>
 
-        <button class="remove-canceled" onclick="ModalDelete.dismiss()">Cancelar</button>
+        <button class="remove-canceled" type="button" onclick="ModalDelete.dismiss()">Cancelar</button>
       </div>
     </div>
   </section>

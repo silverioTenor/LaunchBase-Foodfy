@@ -15,6 +15,6 @@ chefRoutes.get('/show/:id', chefController.show);
 chefRoutes.get('/update/:id', chefController.update);
 chefRoutes.post('/', upload.array('photo', 1), chefValidator.post, chefController.post);
 chefRoutes.put('/', upload.array('photo', 1), chefValidator.put, chefController.put);
-// chefRoutes.delete('/', chefController.create);
+chefRoutes.delete('/', chefController.delete);
 
 module.exports = chefRoutes;

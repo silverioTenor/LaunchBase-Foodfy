@@ -143,8 +143,37 @@ class ChefController {
     }
   }
 
-  delete(request, response) {
-    return response.render('private/chefs/update');
+  async delete(request, response) {
+    try {
+      const { id } = request.body;
+
+      const chef = await getOneChef('', id);
+
+      const removeFiles = new RemoveFilesService();
+      await removeFiles.execute({
+        removedPhotos: `${chef.image.id},`,
+        oldImages: [chef.image],
+      });
+
+      const chefDB = new Chef();
+      await chefDB.delete(id);
+
+      return response.render('private/chefs/index', {
+        toast: {
+          status: 'success',
+          message: 'Chef removido com sucesso!',
+        }
+      });
+    } catch (err) {
+      console.log(err);
+
+      return response.render('private/chefs/index', {
+        toast: {
+          status: 'error',
+          message: 'Sistema indisponível no momento!',
+        }
+      });
+    }
   }
 }
 

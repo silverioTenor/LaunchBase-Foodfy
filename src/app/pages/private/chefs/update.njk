@@ -1,5 +1,7 @@
 {% extends '../layout.njk' %}
+
 {% import './fields.njk' as chefContainer %}
+{% import '../../components/confirmModalDelete.njk' as delete %}
 
 {% block subTitle %}
   <title>Página de Edição</title>
@@ -12,5 +14,7 @@
 
     {{ chefContainer.fields('Editando chef', chef, true, false) }}
   </form>
+
+  {{ delete.modal('/admin/chefs', chef) }}
 
 {% endblock content %}
