@@ -2,7 +2,7 @@ const Recipe = require('../models/Recipe');
 
 const CreateFilesService = require('../services/CreateFiles.service');
 
-const { getAllRecipes } = require('../utils/keepRecipes');
+const { getAllRecipes, getOneRecipe } = require('../utils/keepRecipes');
 
 class RecipeController {
 
@@ -82,8 +82,25 @@ class RecipeController {
     }
   }
 
-  show(request, response) {
-    return response.render('private/recipes/show');
+  async show(request, response) {
+    try {
+      const { id } = request.params;
+
+      const base_url = `${request.protocol}://${request.headers.host}`;
+
+      const recipe = await getOneRecipe(base_url, id);
+
+      return response.render('private/recipes/show', { recipe });
+    } catch (err) {
+      console.log(err);
+
+      return response.render('private/recipes/show', {
+        toast: {
+          status: 'error',
+          message: 'Sistema indisponível no momento!',
+        }
+      });
+    }
   }
 
   async update(request, response) {

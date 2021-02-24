@@ -1,5 +1,5 @@
 const { getManyChefs, getOneChef } = require('../utils/keepChefs');
-const { getAllRecipes } = require('../utils/keepRecipes');
+const { getAllRecipes, getOneRecipe } = require('../utils/keepRecipes');
 
 class HomeController {
 
@@ -43,8 +43,25 @@ class HomeController {
     }
   }
 
-  recipeShow(request, response) {
-    return response.render('public/recipes/show');
+  async recipeShow(request, response) {
+    try {
+      const { id } = request.params;
+
+      const base_url = `${request.protocol}://${request.headers.host}`;
+
+      const recipe = await getOneRecipe(base_url, id);
+
+      return response.render('public/recipes/show', { recipe });
+    } catch (err) {
+      console.log(err);
+
+      return response.render('public/recipes/show', {
+        toast: {
+          status: 'error',
+          message: 'Sistema indisponível no momento!',
+        }
+      });
+    }
   }
 
   about(request, response) {

@@ -34,24 +34,23 @@ module.exports = {
   },
   async getOneRecipe(base_url, id) {
     try {
-      const chefDB = new Chef();
-      const chef = await chefDB.findByID(id);
+      const recipeDB = new Recipe();
+      const recipe = await recipeDB.findOneRecipeWithChef(id);
 
       const values = {
-        id: chef.id,
-        column: 'chef_id'
+        id: recipe.id,
+        column: 'recipe_id'
       };
 
       const getFiles = new GetFilesService();
-      const { fm_id, images } = await getFiles.execute(values, base_url);
+      const { images } = await getFiles.execute(values, base_url);
 
-      const newChef = {
-        ...chef,
-        image: images[0],
-        fm_id,
+      const newRecipe = {
+        ...recipe,
+        image: images
       };
 
-      return newChef;
+      return newRecipe;
     } catch (err) {
       throw new Error(err);
     }
