@@ -61,17 +61,19 @@ class Base {
   async save(fields) {
     try {
       let keys = [],
-        values = [];
+        values = [],
+        positions = [];
 
-      Object.keys(fields).map((key) => {
+      Object.keys(fields).map((key, index) => {
         keys.push(key);
-        values.push(`'${fields[key]}'`);
+        values.push(fields[key]);
+        positions.push(`$${++index}`);
       });
 
       const sql = `INSERT INTO ${this.table} (${keys.join(',')}) 
-      VALUES (${values.join(',')}) RETURNING id`;
+      VALUES (${positions.join(',')}) RETURNING id`;
 
-      const results = await db.query(sql);
+      const results = await db.query(sql, values);
       return results.rows[0].id;
     } catch (err) {
       throw new Error(`Error saving: ${err}`);
@@ -82,17 +84,19 @@ class Base {
     try {
       const { id, column } = val;
 
-      let setFields = [];
+      let lines = [],
+        values = [];
 
       Object.keys(fields).map((key) => {
-        const line = `${key} = '${fields[key]}'`;
-        setFields.push(line);
+        const line = `${key} = $${++index}`;
+        lines.push(line);
+        values.push(fields[key]);
       });
 
-      const sql = `UPDATE ${this.table} SET ${setFields.join(',')}
+      const sql = `UPDATE ${this.table} SET ${lines.join(',')}
       WHERE ${column} = ${id}`;
 
-      return await db.query(sql);
+      return await db.query(sql, values);
     } catch (err) {
       throw new Error(`Error updating: ${err}`);
     }

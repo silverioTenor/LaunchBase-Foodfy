@@ -7,6 +7,8 @@
 
 {% block content %}
 
-  {{ recipe.fields('Criando receita', false, true) }}
+  <form class="admin-container" method="POST" action="/admin/recipes" enctype="multipart/form-data">
+    {{ recipe.fields('Criando receita', false, true, chefs) }}
+  </form>
 
 {% endblock content %}

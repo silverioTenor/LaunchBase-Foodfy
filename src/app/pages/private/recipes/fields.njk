@@ -1,73 +1,77 @@
 {% import '../../components/inputContainer.njk' as field %}
 {% import '../../components/photosUploadContainer.njk' as container %}
 
-{% macro fields(title, isDelete, hasAddInputButton) %}
+{% macro fields(title, isDelete, hasAddInputButton, chefs) %}
 
-  <form class="admin-container" method="POST" action="?" enctype="multipart/form-data">
-    <div class="header-section">
-      <h1>{{ title }}</h1>
+  <div class="header-section">
+    <h1>{{ title }}</h1>
 
-      <div class="header-buttons">
-        {% if isDelete %}
-          <button class="btn-delete" type="button">Deletar</button>
-        {% endif %}
+    <div class="header-buttons">
+      {% if isDelete %}
+        <button class="btn-delete" type="button">Deletar</button>
+      {% endif %}
 
-        <div class="login-buttons">
-          <button type="submit">Salvar receita</button>
-        </div>
+      <div class="login-buttons">
+        <button type="submit">Salvar receita</button>
       </div>
     </div>
+  </div>
 
-    <div id="form-recipe">
-      <div class="field-container photo-recipe-container">
-        {{ container.photos(recipe, 'recipes') }}
-      </div>
-
-      <div class="field-container">
-        <label for="chef">Chef</label>
-
-        <select name="chef" id="chef">
-          <option class="select-option" value="">Selecione um chef</option>
-          <option value="">Fulano</option>
-          <option value="">Ciclano</option>
-          <option value="">Beltrano</option>
-        </select>
-      </div>
-
-      <div class="field-container">
-        <label>Ingredientes</label>
-
-        <div id="ingredients">
-          <div class="ingredient">
-            {{ field.input('text', 'ingredients[]', '') }}
-          </div>
-        </div>
-
-        {% if hasAddInputButton %}
-          <button type="button" class="btn-no-background add-ingredient">Adicionar novo ingrediente</button>
-        {% endif %}
-      </div>
-
-      <div class="field-container">
-        <label>Modo de preparo</label>
-
-        <div id="steps">
-          <div class="step">
-            {{ field.input('text', 'steps[]', '') }}
-          </div>
-        </div>
-
-        {% if hasAddInputButton %}
-          <button type="button" class="btn-no-background add-step">Adicionar novo passo</button>
-        {% endif %}
-      </div>
-
-      <div class="field-container">
-        <label for="info">Informações adicionais</label>
-
-        <textarea name="others-info" id="info"></textarea>
-      </div>
+  <div id="form-recipe">
+    <div class="field-container photo-recipe-container">
+      {{ container.photos(recipe, 'recipes') }}
     </div>
-  </form>
+
+    <div class="field-container">
+      <label>Título da receita</label>
+
+      {{ field.input('text', 'title', '') }}
+    </div>
+
+    <div class="field-container">
+      <label for="chef">Chef</label>
+
+      <select name="chef_id" id="chef">
+        <option class="select-option" value="">Selecione um chef</option>
+        {% for chef in chefs %}
+          <option value="{{ chef.id }}">{{ chef.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="field-container">
+      <label>Ingredientes</label>
+
+      <div id="ingredients">
+        <div class="ingredient">
+          {{ field.input('text', 'ingredients[]', '') }}
+        </div>
+      </div>
+
+      {% if hasAddInputButton %}
+        <button type="button" class="btn-no-background add-ingredient">Adicionar novo ingrediente</button>
+      {% endif %}
+    </div>
+
+    <div class="field-container">
+      <label>Modo de preparo</label>
+
+      <div id="steps">
+        <div class="step">
+          {{ field.input('text', 'steps[]', '') }}
+        </div>
+      </div>
+
+      {% if hasAddInputButton %}
+        <button type="button" class="btn-no-background add-step">Adicionar novo passo</button>
+      {% endif %}
+    </div>
+
+    <div class="field-container">
+      <label for="info">Informações adicionais</label>
+
+      <textarea name="description" id="info"></textarea>
+    </div>
+  </div>
 
 {% endmacro %}
