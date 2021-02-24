@@ -8,7 +8,10 @@ class CreateFilesService {
       const fmID = await filesManagerDB.save(fields);
 
       const filesDB = new File();
-      await filesDB.save([path, fmID]);
+      await filesDB.save({
+        path,
+        files_manager_id: fmID,
+      });
     } catch (err) {
       throw new Error(err);
     }
