@@ -2,35 +2,19 @@
 
   {% if entity.image %}
     <div id="photo-preview">
-      <div 
-        id="{{ entity.image.id }}" 
-        class="photo" 
-        onclick="PhotosUpload.removePhoto(event)"
-      >
-        <img src="{{ entity.image.path }}" alt="{{ entity.name }}"/>
-        <i 
-          class="material-icons photo-remove-icon" 
-          onclick="PhotosUpload.countRemovedPhotos(event)"
-        >close</i>
-      </div>
+      {% for image in entity.image %}
+        <div id="{{ image.id }}" class="photo" onclick="PhotosUpload.removePhoto(event)">
+          <img src="{{ image.path }}" alt="{{ entity.name }}"/>
+          <i class="material-icons photo-remove-icon" onclick="PhotosUpload.countRemovedPhotos(event)">close</i>
+        </div>
+      {% endfor %}
     </div>
   {% else %}
     <div id="photo-preview"></div>
   {% endif %}
 
   <button type="button" class="choose">
-    <input 
-      type="file" 
-      multiple="multiple" 
-      name="photo" 
-      accept="image/*" 
-      title="" 
-      {% if uploadLimit === 'recipes' %}
-        onchange="PhotosUpload.handleFileInput(event, 5)"
-      {% else %}
-        onchange="PhotosUpload.handleFileInput(event, 1)"
-      {% endif %}
-    />
+    <input type="file" multiple="multiple" name="photo" accept="image/*" title="" onchange="PhotosUpload.handleFileInput(event, {{ 5 if uploadLimit === 'recipes' else 1}})"/>
 
     Escolher foto
   </button>

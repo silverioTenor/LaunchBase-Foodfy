@@ -105,10 +105,16 @@ class RecipeController {
 
   async update(request, response) {
     try {
+      const { id } = request.params;
+
+      const base_url = `${request.protocol}://${request.headers.host}`;
+
+      const recipe = await getOneRecipe(base_url, id);
+
       const recipeDB = new Recipe();
       const chefs = await recipeDB.findChefs();
 
-      return response.render('private/recipes/update', { chefs });
+      return response.render('private/recipes/update', { recipe, chefs });
     } catch (err) {
       console.log(err);
 

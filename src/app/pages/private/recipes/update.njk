@@ -1,5 +1,5 @@
 {% extends '../layout.njk' %}
-{% import './fields.njk' as recipe %}
+{% import './fields.njk' as formRecipe %}
 
 {% block subTitle %}
   <title>Página de Edição</title>
@@ -8,7 +8,7 @@
 {% block content %}
 
   <form class="admin-container" method="POST" action="/admin/recipes?method=PUT" enctype="multipart/form-data">
-    {{ recipe.fields('Editando receita', true, false, chefs) }}
+    {{ formRecipe.fields('Editando receita', recipe, true, false, chefs) }}
   </form>
 
 {% endblock content %}
