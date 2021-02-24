@@ -1,4 +1,5 @@
 {% extends '../layout.njk' %}
+
 {% import '../../components/areaSearch.njk' as search %}
 
 {% block subTitle %}
@@ -21,83 +22,23 @@
     </div>
 
     <div class="card-recipes-container">
-      <div class="card-recipe">
-        <img src="/img/common/burger.png" alt="Burger"/>
 
-        <div class="card-recipe-content">
-          <strong>Triplo bacon burger</strong>
-          <span>por Jorge Relato</span>
+      {% for recipe in recipes %}
+        <div class="card-recipe">
+          <img src="{{ recipe.image }}" alt="{{ recipe.title }}"/>
 
-          <button>
-            <a href="/admin/recipes/show">Visualizar</a>
-          </button>
+          <div class="card-recipe-content">
+            <strong>{{ recipe.title }}</strong>
+            <span>por
+              {{ recipe.chef_name }}</span>
+
+            <button>
+              <a href="/admin/recipes/show/{{ recipe.id }}">Visualizar</a>
+            </button>
+          </div>
         </div>
-      </div>
+      {% endfor %}
 
-      <div class="card-recipe">
-        <img src="/img/common/burger.png" alt="Burger"/>
-
-        <div class="card-recipe-content">
-          <strong>Triplo bacon burger</strong>
-          <span>por Jorge Relato</span>
-
-          <button>
-            <a href="/admin/recipes/show">Visualizar</a>
-          </button>
-        </div>
-      </div>
-
-      <div class="card-recipe">
-        <img src="/img/common/burger.png" alt="Burger"/>
-
-        <div class="card-recipe-content">
-          <strong>Triplo bacon burger</strong>
-          <span>por Jorge Relato</span>
-
-          <button>
-            <a href="/admin/recipes/show">Visualizar</a>
-          </button>
-        </div>
-      </div>
-
-      <div class="card-recipe">
-        <img src="/img/common/burger.png" alt="Burger"/>
-
-        <div class="card-recipe-content">
-          <strong>Triplo bacon burger</strong>
-          <span>por Jorge Relato</span>
-
-          <button>
-            <a href="/admin/recipes/show">Visualizar</a>
-          </button>
-        </div>
-      </div>
-
-      <div class="card-recipe">
-        <img src="/img/common/burger.png" alt="Burger"/>
-
-        <div class="card-recipe-content">
-          <strong>Triplo bacon burger</strong>
-          <span>por Jorge Relato</span>
-
-          <button>
-            <a href="/admin/recipes/show">Visualizar</a>
-          </button>
-        </div>
-      </div>
-
-      <div class="card-recipe">
-        <img src="/img/common/burger.png" alt="Burger"/>
-
-        <div class="card-recipe-content">
-          <strong>Triplo bacon burger</strong>
-          <span>por Jorge Relato</span>
-
-          <button>
-            <a href="/admin/recipes/show">Visualizar</a>
-          </button>
-        </div>
-      </div>
     </div>
   </section>
 

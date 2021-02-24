@@ -27,47 +27,17 @@
     <h2>Mais acessadas</h2>
 
     <div class="recipes">
-      <div class="recipe">
-        <img src="/img/common/burger.png" alt="Búrger"/>
 
-        <strong>Triplo bacon burger</strong>
-        <span>por Jorge Relato</span>
-      </div>
+      {% for recipe in recipes %}
+        <div id="{{ recipe.id }}" class="recipe">
+          <img src="{{ recipe.image }}" alt="{{ recipe.title }}"/>
 
-      <div class="recipe">
-        <img src="/img/common/pizza.png" alt="Pizza 4 estações"/>
+          <strong>{{ recipe.title }}</strong>
+          <span>por
+            {{ recipe.chef_name }}</span>
+        </div>
+      {% endfor %}
 
-        <strong>Pizza 4 estações</strong>
-        <span>por Fabiana Melo</span>
-      </div>
-
-      <div class="recipe">
-        <img src="/img/common/espaguete.png" alt="Espaguete"/>
-
-        <strong>Espaguete ao alho</strong>
-        <span>por Júlia Kinoto</span>
-      </div>
-
-      <div class="recipe">
-        <img src="/img/common/lasanha.png" alt="Lasanha"/>
-
-        <strong>Lasanha mac'n cheese</strong>
-        <span>por Juliano Vieira</span>
-      </div>
-
-      <div class="recipe">
-        <img src="/img/common/doce.png" alt="Docinho"/>
-
-        <strong>Docinho pão-do-céu</strong>
-        <span>por Ricardo Govea</span>
-      </div>
-
-      <div class="recipe">
-        <img src="/img/common/asinhas.png" alt="Asinha"/>
-
-        <strong>Asinha de frango ao barbecue</strong>
-        <span>por Vania Steroski</span>
-      </div>
     </div>
   </section>
 

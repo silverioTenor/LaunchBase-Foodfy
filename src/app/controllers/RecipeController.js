@@ -2,10 +2,27 @@ const Recipe = require('../models/Recipe');
 
 const CreateFilesService = require('../services/CreateFiles.service');
 
+const { getAllRecipes } = require('../utils/keepRecipes');
+
 class RecipeController {
 
-  index(request, response) {
-    return response.render('private/recipes/index');
+  async index(request, response) {
+    try {
+      const base_url = `${request.protocol}://${request.headers.host}`;
+
+      const recipes = await getAllRecipes(base_url);
+
+      return response.render('private/recipes/index', { recipes });
+    } catch (err) {
+      console.log(err);
+
+      return response.render('private/recipes/index', {
+        toast: {
+          status: 'error',
+          message: 'Sistema indisponível no momento!',
+        }
+      });
+    }
   }
 
   async create(request, response) {
