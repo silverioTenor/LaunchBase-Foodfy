@@ -90,7 +90,12 @@ class ChefController {
 
       const chef = await getOneChef(base_url, id);
 
-      return response.render('private/chefs/update', { chef });
+      const newChef = {
+        ...chef,
+        image: [{ ...chef.image }]
+      }
+
+      return response.render('private/chefs/update', { chef: newChef });
     } catch (err) {
       console.log(err);
 
