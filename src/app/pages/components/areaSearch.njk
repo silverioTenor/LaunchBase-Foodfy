@@ -1,6 +1,11 @@
 {% macro area(route, filter, placeholder) %}
 
-  <form id="form-filter" method="GET" action="{{ route }}" class="nav-filter">
+  <form 
+    id="form-filter" 
+    method="GET" 
+    action="{{ route }}" 
+    class="nav-filter"
+  >
     <input 
       type="text" 
       name="filter" 

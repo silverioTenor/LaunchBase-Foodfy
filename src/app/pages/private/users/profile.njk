@@ -8,8 +8,16 @@
 
 {% block content %}
 
-  <form class="admin-container" method="POST" action="/admin/profile?_method=PUT">
-    <input type="hidden" name="id" value="{{ user.id }}">
+  <form 
+    class="admin-container" 
+    method="POST" 
+    action="/admin/profile?_method=PUT"
+  >
+    <input 
+      type="hidden" 
+      name="id" 
+      value="{{ user.id }}"
+    >
     {{ profile.fields('Bem vindo(a)', user, false, false, false) }}
   </form>
 

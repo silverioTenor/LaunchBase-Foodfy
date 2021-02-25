@@ -7,7 +7,9 @@
 <div class="container-global">
   <header class="header-navigation dark">
     <div class="header-navigation-into">
-      <a href="{{ '/admin/profile/'+session.user.userID if session.user else '/admin/' }}" class="logoImg">
+      <a 
+        href="{{ '/admin/profile/'+session.user.userID if session.user else '/admin/' }}" class="logoImg"
+      >
         <img src="/img/system/logo_white.png" alt="logo"/>
       </a>
 

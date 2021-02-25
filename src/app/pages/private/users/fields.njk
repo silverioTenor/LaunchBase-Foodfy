@@ -3,8 +3,7 @@
 {% macro fields(title, user, isDelete, isCancel, isCheck) %}
 
   <div class="header-section">
-    <h1>{{ title }}
-      {{ user.firstName }}!</h1>
+    <h1>{{ title }} {{ user.firstName }}!</h1>
 
     <div class="header-buttons">
       {% if isDelete %}
@@ -16,7 +15,11 @@
       </div>
 
       {% if isCancel %}
-        <button class="btn-cancel" type="button" onclick="history.back()">Cancelar</button>
+        <button 
+          class="btn-cancel" 
+          type="button" 
+          onclick="history.back()"
+        >Cancelar</button>
       {% endif %}
     </div>
   </div>

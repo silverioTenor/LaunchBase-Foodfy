@@ -2,8 +2,7 @@
 
   <section class="recipes-container bottom">
     <div class="header-section">
-      <h2>Receita:
-        {{ recipe.title }}</h2>
+      <h2>Receita: {{ recipe.title }}</h2>
 
       {% if hasButton %}
         <a href="/admin/recipes/update/{{ recipe.id }}">
@@ -13,11 +12,20 @@
     </div>
 
     <div class="banner-recipe-show">
-      <img src="{{ recipe.image[0].path }}" alt="{{ recipe.title }}" onclick="Lightbox.openModal()"/>
+      <img 
+        src="{{ recipe.image[0].path }}" 
+        alt="{{ recipe.title }}" 
+        onclick="Lightbox.openModal()"
+      />
 
       <div class="small-banner-view">
         {% for image in recipe.image %}
-          <img class="{{ 'photoActivated' if loop.index0 === 0 }}" onclick="ImagesPreview.visible(this)" src="{{ image.path }}" alt="{{ recipe.name }}"/>
+          <img 
+            class="{{ 'photoActivated' if loop.index0 === 0 }}" 
+            onclick="ImagesPreview.visible(this)" 
+            src="{{ image.path }}" 
+            alt="{{ recipe.name }}"
+          />
         {% endfor %}
       </div>
     </div>
@@ -26,8 +34,7 @@
 
     <div class="recipe-container-title">
       <h1>{{ recipe.title }}</h1>
-      <span>por
-        {{ recipe.chef_name }}</span>
+      <span>por {{ recipe.chef_name }}</span>
     </div>
 
     <div class="recipe-box">

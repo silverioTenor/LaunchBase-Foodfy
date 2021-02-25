@@ -14,7 +14,7 @@
 
   <section class="admin-container">
     <div class="header-section">
-      {% if filter == null %}
+      {% if not filter %}
         <h1>Gerenciar receitas</h1>
       {% else %}
         <h1>Buscando por: {{ filter }}</h1>

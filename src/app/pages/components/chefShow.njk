@@ -18,11 +18,9 @@
       <h1>{{ chef.name }}</h1>
       <span>
         {% if chef.total_recipes > 1 %}
-          {{ chef.total_recipes }}
-          receitas
+          {{ chef.total_recipes }} receitas
         {% elseif chef.total_recipes === 1 %}
-          {{ chef.total_recipes }}
-          receita
+          {{ chef.total_recipes }} receita
         {% else %}
           Sem receita
         {% endif %}

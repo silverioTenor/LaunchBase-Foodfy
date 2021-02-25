@@ -2,13 +2,16 @@
 
   <section class="remove-modal-container">
     <div class="remove-modal">
-      <h2>Esta operação não pode ser desfeita.
-        <br/>
-        Deseja continuar?</h2>
+      <h2>Esta operação não pode ser desfeita. <br/> Deseja continuar?</h2>
 
       <div class="actions-buttons">
         <form method="POST" action="{{ route }}?_method=DELETE">
-          <input type="hidden" name="id" value="{{ entity.id }}"/>
+          <input 
+            type="hidden" 
+            name="id" 
+            value="{{ entity.id }}"
+          />
+
           <button class="remove-now" type="submit">Sim</button>
         </form>
 

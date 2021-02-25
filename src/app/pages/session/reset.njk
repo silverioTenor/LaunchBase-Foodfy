@@ -14,8 +14,16 @@
   <section class="session-container">
     <h1>Esqueceu a Senha?</h1>
 
-    <form id="reset-form" method="POST" action="/session/password-reset">
-      <input type="hidden" name="token" value="{{ token }}"/>
+    <form 
+      id="reset-form" 
+      method="POST" 
+      action="/session/password-reset"
+    >
+      <input 
+        type="hidden" 
+        name="token" 
+        value="{{ token }}"
+        />
 
       <div class="field-container">
         <label for="email">Email</label>

@@ -7,7 +7,12 @@
 
 {% block content %}
 
-  <form class="admin-container" method="POST" action="/admin/recipes" enctype="multipart/form-data">
+  <form 
+    class="admin-container" 
+    method="POST" 
+    action="/admin/recipes" 
+    enctype="multipart/form-data"
+  >
     {{ recipe.fields('Criando receita', '', false, true, chefs) }}
   </form>
 

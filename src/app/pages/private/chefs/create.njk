@@ -7,7 +7,12 @@
 
 {% block content %}
 
-  <form class="admin-container" method="POST" action="/admin/chefs" enctype="multipart/form-data">
+  <form 
+    class="admin-container" 
+    method="POST" 
+    action="/admin/chefs" 
+    enctype="multipart/form-data"
+  >
     {{ chef.fields('Criando chef', false, true) }}
   </form>
 

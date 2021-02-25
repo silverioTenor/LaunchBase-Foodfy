@@ -9,8 +9,17 @@
 
 {% block content %}
 
-  <form class="admin-container" method="POST" action="/admin/recipes?_method=PUT" enctype="multipart/form-data">
-    <input type="hidden" name="id" value="{{ recipe.id }}"/>
+  <form 
+    class="admin-container" 
+    method="POST" 
+    action="/admin/recipes?_method=PUT" 
+    enctype="multipart/form-data"
+  >
+    <input 
+      type="hidden" 
+      name="id" 
+      value="{{ recipe.id }}"
+    />
 
     {{ formRecipe.fields('Editando receita', recipe, true, false, chefs) }}
   </form>

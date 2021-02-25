@@ -8,7 +8,11 @@
 
     <div class="header-buttons">
       {% if isDelete %}
-        <button class="btn-delete confirm-remove" type="button" onclick="ModalDelete.active()">Deletar</button>
+        <button 
+          class="btn-delete confirm-remove" 
+          type="button" 
+          onclick="ModalDelete.active()"
+        >Deletar</button>
       {% endif %}
 
       <div class="login-buttons">
@@ -34,7 +38,10 @@
       <select name="chef_id" id="chef">
         <option class="select-option" value="">Selecione um chef</option>
         {% for chef in chefs %}
-          <option value="{{ chef.id }}" {% if chef.id === recipe.chef_id %} }="}" selected="selected" {% endif %}>{{ chef.name }}</option>
+          <option 
+            value="{{ chef.id }}" 
+            {{ 'selected' if chef.id === recipe.chef_id }}
+          >{{ chef.name }}</option>
         {% endfor %}
       </select>
     </div>
@@ -57,7 +64,10 @@
       </div>
 
       {% if hasAddInputButton %}
-        <button type="button" class="btn-no-background add-ingredient">Adicionar novo ingrediente</button>
+        <button 
+          type="button" 
+          class="btn-no-background add-ingredient"
+        >Adicionar novo ingrediente</button>
       {% endif %}
     </div>
 
@@ -79,7 +89,10 @@
       </div>
 
       {% if hasAddInputButton %}
-        <button type="button" class="btn-no-background add-step">Adicionar novo passo</button>
+        <button 
+          type="button" 
+          class="btn-no-background add-step"
+        >Adicionar novo passo</button>
       {% endif %}
     </div>
 
