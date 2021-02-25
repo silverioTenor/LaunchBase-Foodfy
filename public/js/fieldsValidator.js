@@ -69,6 +69,8 @@ const Validator = {
   }
 }
 
-if (Validator.button && !document.querySelector('#form-filter')) {
+if (Validator.button
+  && !document.querySelector('#form-filter')
+  && !document.querySelector('#form-logout')) {
   Validator.verify();
 }
