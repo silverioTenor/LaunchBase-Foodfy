@@ -49,7 +49,8 @@ class SessionController {
   }
 
   logout(request, response) {
-    return
+    request.session.destroy();
+    return response.redirect('/session/login');
   }
 
   forgotForm(request, response) {

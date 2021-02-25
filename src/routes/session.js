@@ -10,6 +10,7 @@ const sessionValidator = new SessionValidator();
 
 sessionRoutes.get('/login', sessionController.loginForm);
 sessionRoutes.post('/login', sessionValidator.login, sessionController.login);
+sessionRoutes.post('/logout', sessionController.logout);
 
 sessionRoutes.get('/forgot-password', sessionController.forgotForm);
 sessionRoutes.get('/password-reset', sessionController.resetForm);

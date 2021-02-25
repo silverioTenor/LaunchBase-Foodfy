@@ -21,3 +21,16 @@
 .dark #form-filter input::placeholder {
   color: rgba(255, 255, 255, 0.575);
 }
+
+.dark #form-logout {
+  position: absolute;
+  right: 5%;
+}
+
+.dark #form-logout button {
+  min-width: initial;
+  height: initial;
+  background: transparent;
+  border: none;
+  font-weight: 500;
+}

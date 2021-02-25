@@ -18,6 +18,10 @@
       </nav>
 
       {% block filter %}{% endblock filter %}
+
+      <form id="form-logout" action="/session/logout" method="POST">
+        <button type="submit">Sair</button>
+      </form>
     </div>
   </header>
 
