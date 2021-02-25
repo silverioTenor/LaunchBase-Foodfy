@@ -1,6 +1,6 @@
 const Validator = {
   fields: document.querySelectorAll('.input-container input'),
-  button: document.querySelector('form button[type=submit]'),
+  button: document.querySelector('.login-buttons button[type=submit]'),
   errors: [],
   verify() {
     Validator.button.addEventListener('click', (e) => {
@@ -69,8 +69,4 @@ const Validator = {
   }
 }
 
-if (Validator.button
-  && !document.querySelector('#form-filter')
-  && !document.querySelector('#form-logout')) {
-  Validator.verify();
-}
+if (Validator.button) Validator.verify();

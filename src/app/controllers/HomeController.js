@@ -7,7 +7,7 @@ class HomeController {
     try {
       const base_url = `${request.protocol}://${request.headers.host}`;
 
-      const recipes = (await getAllRecipes(base_url)).filter((recipe, index) => {
+      const recipes = (await getAllRecipes(base_url, {})).filter((recipe, index) => {
         return index <= 5 ? recipe : false;
       });
 
