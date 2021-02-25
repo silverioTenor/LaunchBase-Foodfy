@@ -4,7 +4,8 @@ const File = require('../models/File');
 const CreateFilesService = require('../services/CreateFiles.service');
 const RemoveFilesService = require('../services/RemoveFiles.service');
 
-const { getManyChefs, getOneChef } = require('../utils/keepChefs');
+const { getAllChefs, getOneChef } = require('../utils/keepChefs');
+const { getAllRecipes } = require('../utils/keepRecipes');
 
 class ChefController {
 
@@ -12,7 +13,7 @@ class ChefController {
     try {
       const base_url = `${request.protocol}://${request.headers.host}`;
 
-      const chefs = await getManyChefs(base_url);
+      const chefs = await getAllChefs(base_url);
 
       return response.render('private/chefs/index', { chefs });
     } catch (err) {
@@ -63,13 +64,17 @@ class ChefController {
 
   async show(request, response) {
     try {
-      const { id } = request.params;
+      const id = Number(request.params.id);
 
       const base_url = `${request.protocol}://${request.headers.host}`;
 
       const chef = await getOneChef(base_url, id);
 
-      return response.render('private/chefs/show', { chef });
+      const recipes = (await getAllRecipes(base_url)).filter(recipe => {
+        return recipe.chef_id === id ? recipe : false;
+      });
+
+      return response.render('private/chefs/show', { chef, recipes });
     } catch (err) {
       console.log(err);
 

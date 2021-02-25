@@ -1,4 +1,4 @@
-const { getManyChefs, getOneChef } = require('../utils/keepChefs');
+const { getAllChefs, getOneChef } = require('../utils/keepChefs');
 const { getAllRecipes, getOneRecipe } = require('../utils/keepRecipes');
 
 class HomeController {
@@ -72,7 +72,7 @@ class HomeController {
     try {
       const base_url = `${request.protocol}://${request.headers.host}`;
 
-      const chefs = await getManyChefs(base_url);
+      const chefs = await getAllChefs(base_url);
 
       return response.render('public/chefs/index', { chefs });
     } catch (err) {
@@ -89,13 +89,17 @@ class HomeController {
 
   async chefShow(request, response) {
     try {
-      const { id } = request.params;
+      const id = Number(request.params.id);
 
       const base_url = `${request.protocol}://${request.headers.host}`;
 
       const chef = await getOneChef(base_url, id);
 
-      return response.render('public/chefs/show', { chef });
+      const recipes = (await getAllRecipes(base_url)).filter(recipe => {
+        return recipe.chef_id === id ? recipe : false;
+      });
+
+      return response.render('public/chefs/show', { chef, recipes });
     } catch (err) {
       console.log(err);
 

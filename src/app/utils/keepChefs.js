@@ -3,7 +3,7 @@ const Chef = require('../models/Chef');
 const GetFilesService = require('../services/GetFiles.service');
 
 module.exports = {
-  async getManyChefs(base_url) {
+  async getAllChefs(base_url) {
     try {
       const chefDB = new Chef();
       const chefs = await chefDB.find();
@@ -35,7 +35,9 @@ module.exports = {
   async getOneChef(base_url, id) {
     try {
       const chefDB = new Chef();
-      const chef = await chefDB.findByID(id);
+      const chef = await chefDB.findChefWithRecipes(id);
+
+      chef.total_recipes = Number(chef.total_recipes);
 
       const values = {
         id: chef.id,

@@ -1,4 +1,4 @@
-{% macro chef(hasButton, link, chef) %}
+{% macro chef(hasButton, link, chef, recipes) %}
 
   <section class="chef-container-show">
     <div class="header-section">
@@ -16,50 +16,37 @@
       <img src="{{ chef.image.path }}" alt="{{ chef.name }}"/>
 
       <h1>{{ chef.name }}</h1>
-      <span>4 receitas</span>
+      <span>
+        {% if chef.total_recipes > 1 %}
+          {{ chef.total_recipes }}
+          receitas
+        {% elseif chef.total_recipes === 1 %}
+          {{ chef.total_recipes }}
+          receita
+        {% else %}
+          Sem receita
+        {% endif %}
+      </span>
     </div>
 
     <h2>Receitas</h2>
 
     <div class="card-recipes-container">
-      <div class="card-recipe">
-        <img src="/img/common/burger.png" alt="Burger"/>
+      {% for recipe in recipes %}
+        <div class="card-recipe">
+          <img src="{{ recipe.image}}" alt="{{ recipe.title }}"/>
 
-        <div class="card-recipe-content">
-          <strong>Triplo bacon burger</strong>
-          <span>por Jorge Relato</span>
+          <div class="card-recipe-content">
+            <strong>{{ recipe.title }}</strong>
+            <span>por
+              {{ recipe.chef_name }}</span>
 
-          <button>
-            <a href="{{ link }}/recipes/show">Visualizar</a>
-          </button>
+            <button>
+              <a href="{{ link }}/recipes/show/{{ chef.id }}">Visualizar</a>
+            </button>
+          </div>
         </div>
-      </div>
-
-      <div class="card-recipe">
-        <img src="/img/common/burger.png" alt="Burger"/>
-
-        <div class="card-recipe-content">
-          <strong>Triplo bacon burger</strong>
-          <span>por Jorge Relato</span>
-
-          <button>
-            <a href="{{ link }}/recipes/show">Visualizar</a>
-          </button>
-        </div>
-      </div>
-
-      <div class="card-recipe">
-        <img src="/img/common/burger.png" alt="Burger"/>
-
-        <div class="card-recipe-content">
-          <strong>Triplo bacon burger</strong>
-          <span>por Jorge Relato</span>
-
-          <button>
-            <a href="{{ link }}/recipes/show">Visualizar</a>
-          </button>
-        </div>
-      </div>
+      {% endfor %}
     </div>
 
   {% endmacro %}
