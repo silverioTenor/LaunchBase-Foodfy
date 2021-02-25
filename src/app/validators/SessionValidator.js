@@ -51,7 +51,7 @@ class SessionValidator {
       return response.render('session/login', {
         toast: {
           status: 'error',
-          message: 'Sistema indisponível. Tente novamente mais tarde.'
+          message: 'Sistema indisponível. Tente novamente!'
         }
       });
     }
@@ -108,7 +108,40 @@ class SessionValidator {
         token: request.body.token,
         toast: {
           status: 'error',
-          message: 'Sistema indisponível. Tente novamente mais tarde.'
+          message: 'Sistema indisponível. Tente novamente!'
+        }
+      });
+    }
+  }
+
+  async forgot(request, response, next) {
+    try {
+      const toast = baseValidator.verify(request.body);
+
+      if (toast) return response.render('session/forgot', { toast });
+
+      const { email } = request.body;
+
+      const userDB = new User();
+      const user = await userDB.findOne({ where: { email } });
+
+      if (!user) return response.render('session/forgot', {
+        toast: {
+          status: 'error',
+          message: 'Usuário não encontrado!'
+        }
+      });
+
+      request.user = user;
+
+      next();
+    } catch (err) {
+      console.log(err);
+
+      return response.render('session/forgot', {
+        toast: {
+          status: 'error',
+          message: 'Sistema indisponível. Tente novamente!'
         }
       });
     }

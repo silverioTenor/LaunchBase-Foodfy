@@ -38,14 +38,6 @@ class SessionController {
         }
       });
     }
-
-
-
-
-
-
-    request.session.user = request.user;
-    return res.redirect(`/admin/profile/${request.user.userID}`);
   }
 
   logout(request, response) {
@@ -57,8 +49,29 @@ class SessionController {
     return response.render('session/forgot');
   }
 
-  forgot(request, response) {
-    return
+  async forgot(request, response) {
+    try {
+      const user = request.user;
+
+      const createTokenToResetPassword = new CreateTokenToResetPasswordService();
+      await createTokenToResetPassword.execute(user.id, user.email);
+
+      return response.render('session/login', {
+        toast: {
+          status: 'info',
+          message: 'Verifique sua caixa de email para continuar.'
+        }
+      });
+    } catch (err) {
+      console.log(err);
+
+      return response.render('session/login', {
+        toast: {
+          status: 'error',
+          message: 'Sistema indisponível. Tente novamente!'
+        }
+      });
+    }
   }
 
   resetForm(request, response) {
