@@ -3,10 +3,16 @@ const Chef = require('../models/Chef');
 const GetFilesService = require('../services/GetFiles.service');
 
 module.exports = {
-  async getAllChefs(base_url) {
+  async getAllChefs(base_url, params) {
     try {
       const chefDB = new Chef();
-      const chefs = await chefDB.find();
+      let chefs = [];
+
+      if (params?.filter) {
+        chefs = await chefDB.search(params);
+      } else {
+        chefs = await chefDB.find();
+      }
 
       const chefsWithImagesPromise = chefs.map(async chef => {
         const values = {

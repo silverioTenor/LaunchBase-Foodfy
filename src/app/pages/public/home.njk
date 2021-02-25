@@ -6,7 +6,7 @@
 {% endblock subTitle %}
 
 {% block filter %}
-  {{ search.area('/recipes', 'Buscar uma receita') }}
+  {{ search.area('/recipes', filter, 'Buscar uma receita') }}
 {% endblock filter %}
 
 {% block content %}
@@ -33,8 +33,7 @@
           <img src="{{ recipe.image }}" alt="{{ recipe.title }}"/>
 
           <strong>{{ recipe.title }}</strong>
-          <span>por
-            {{ recipe.chef_name }}</span>
+          <span>por {{ recipe.chef_name }}</span>
         </div>
       {% endfor %}
 

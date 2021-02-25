@@ -11,11 +11,28 @@ class ChefController {
 
   async index(request, response) {
     try {
+      let { page, limit, filter } = request.query;
+
+      page = page || 1;
+      limit = limit || 9;
+      let offset = limit * (page - 1);
+
+      const params = {
+        filter,
+        limit,
+        offset,
+      };
+
       const base_url = `${request.protocol}://${request.headers.host}`;
 
-      const chefs = await getAllChefs(base_url);
+      const chefs = await getAllChefs(base_url, params);
 
-      return response.render('private/chefs/index', { chefs });
+      const pagination = {
+        page,
+        total: Math.ceil(chefs[0].total / limit),
+      };
+
+      return response.render('private/chefs/index', { chefs, pagination, filter });
     } catch (err) {
       console.log(err);
 

@@ -29,6 +29,7 @@ class Recipe extends Base {
       let sql = `
         SELECT chefs.name AS chef_name, recipes.* FROM ${this.table}
         LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+        ORDER BY recipes.updated_at DESC
       `;
 
       const results = await db.query(sql);
@@ -60,6 +61,39 @@ class Recipe extends Base {
       return results.rows[0];
     } catch (err) {
       throw new Error(`Search error: ${err}`);
+    }
+  }
+
+  async search(params) {
+    try {
+      const { filter, limit, offset } = params;
+
+      let filterQuery = '',
+        totalQuery = `(
+        SELECT COUNT(*) FROM recipes
+      ) AS total`;
+
+      if (filter) {
+        filterQuery = `WHERE recipes.title ILIKE '%${filter}%'`;
+
+        totalQuery = `(
+          SELECT COUNT(*) FROM recipes
+          ${filterQuery}
+        ) AS total`;
+      }
+
+      const sql = `
+        SELECT chefs.name AS chef_name, recipes.*, ${totalQuery} FROM recipes
+        LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+        ${filterQuery}
+        ORDER BY recipes.updated_at DESC
+        LIMIT $1 OFFSET $2
+      `;
+
+      const results = await db.query(sql, [limit, offset]);
+      return results.rows;
+    } catch (err) {
+      throw new Error(err);
     }
   }
 }

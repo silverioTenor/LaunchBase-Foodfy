@@ -111,6 +111,38 @@ class Base {
       throw new Error(`Error deleting: ${err}`);
     }
   }
+
+  async search(params) {
+    try {
+      const { filter, limit, offset } = params;
+
+      let filterQuery = '',
+        totalQuery = `(
+        SELECT COUNT(*) FROM ${this.table}
+      ) AS total`;
+
+      if (filter) {
+        filterQuery = `WHERE ${this.table}.name ILIKE '%${filter}%'`;
+
+        totalQuery = `(
+          SELECT COUNT(*) FROM ${this.table}
+          ${filterQuery}
+        ) AS total`;
+      }
+
+      const sql = `
+        SELECT ${this.table}.id, ${this.table}.name, ${totalQuery} FROM ${this.table}
+        ${filterQuery}
+        ORDER BY ${this.table}.id
+        LIMIT $1 OFFSET $2
+      `;
+
+      const results = await db.query(sql, [limit, offset]);
+      return results.rows;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
 }
 
 module.exports = Base;

@@ -6,13 +6,17 @@
 {% endblock subTitle %}
 
 {% block filter %}
-  {{ search.area('/recipes', 'Buscar uma receita') }}
+  {{ search.area('/recipes', filter, 'Buscar uma receita') }}
 {% endblock filter %}
 
 {% block content %}
 
   <section class="recipes-container">
-    <h2>Nossas Receitas</h2>
+    {% if filter %}
+      <h2>Buscando por: {{ filter }}</h2>
+    {% else %}
+      <h2>Receitas</h2>
+    {% endif %}
 
     <div class="recipes">
 
@@ -21,12 +25,20 @@
           <img src="{{ recipe.image }}" alt="{{ recipe.title }}"/>
 
           <strong>{{ recipe.title }}</strong>
-          <span>por
-            {{ recipe.chef_name }}</span>
+          <span>por {{ recipe.chef_name }}</span>
         </div>
       {% endfor %}
 
     </div>
+
+    {% if pagination.total > 1 %}
+      <div 
+        class="pagination" 
+        data-page="{{ pagination.page }}"
+        data-total="{{ pagination.total }}"
+        data-filter="{{ filter }}"
+      ></div>
+    {% endif %}
   </section>
 
 {% endblock content %}

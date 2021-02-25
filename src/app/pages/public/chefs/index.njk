@@ -1,15 +1,32 @@
 {% extends '../layout.njk' %}
+{% import '../../components/areaSearch.njk' as search %}
 {% import '../../components/chefsList.njk' as list %}
 
 {% block subTitle %}
   <title>Foodfy | Chefs</title>
 {% endblock subTitle %}
 
+{% block filter %}
+  {{ search.area('/chefs', filter , 'Buscar pelo nome') }}
+{% endblock filter %}
+
 {% block content %}
 
   <section class="recipes-container">
+    {% if filter %}
+      <h2>Buscando por: {{ filter }}</h2>
+    {% endif %}
 
     {{ list.chefs('/chefs/show', chefs) }}
+
+    {% if pagination.total > 1 %}
+      <div 
+        class="pagination" 
+        data-page="{{ pagination.page }}"
+        data-total="{{ pagination.total }}"
+        data-filter="{{ filter }}"
+      ></div>
+    {% endif %}
 
   </section>
 

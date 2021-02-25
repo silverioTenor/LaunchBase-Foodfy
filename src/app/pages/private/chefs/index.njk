@@ -7,14 +7,18 @@
 {% endblock subTitle %}
 
 {% block filter %}
-  {{ search.area('/admin/chefs', 'Buscar pelo nome') }}
+  {{ search.area('/admin/chefs', filter , 'Buscar pelo nome') }}
 {% endblock filter %}
 
 {% block content %}
 
   <section class="admin-container">
     <div class="header-section">
-      <h1>Gerenciar chefs</h1>
+      {% if not filter %}
+        <h1>Gerenciar chefs</h1>
+      {% else %}
+        <h1>Buscando por: {{ filter }}</h1>
+      {% endif %}
 
       <a href="/admin/chefs/create">
         <button>Cadastrar</button>
@@ -22,6 +26,15 @@
     </div>
 
     {{ list.chefs('/admin/chefs/show', chefs) }}
+
+    {% if pagination.total > 1 %}
+      <div 
+        class="pagination" 
+        data-page="{{ pagination.page }}" 
+        data-total="{{ pagination.total }}" 
+        data-filter="{{ filter }}"
+      ></div>
+    {% endif %}
   </section>
 
 {% endblock content %}

@@ -3,10 +3,16 @@ const Recipe = require('../models/Recipe');
 const GetFilesService = require('../services/GetFiles.service');
 
 module.exports = {
-  async getAllRecipes(base_url) {
+  async getAllRecipes(base_url, params) {
     try {
       const recipeDB = new Recipe();
-      const recipes = await recipeDB.findRecipesWithChef();
+      let recipes = [];
+
+      if (params?.filter) {
+        recipes = await recipeDB.search(params);
+      } else {
+        recipes = await recipeDB.findRecipesWithChef();
+      }
 
       const recipesWithImagesPromise = recipes.map(async recipe => {
         const values = {

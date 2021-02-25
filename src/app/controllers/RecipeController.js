@@ -10,11 +10,28 @@ class RecipeController {
 
   async index(request, response) {
     try {
+      let { page, limit, filter } = request.query;
+
+      page = page || 1;
+      limit = limit || 6;
+      let offset = limit * (page - 1);
+
+      const params = {
+        filter,
+        limit,
+        offset,
+      };
+
       const base_url = `${request.protocol}://${request.headers.host}`;
 
-      const recipes = await getAllRecipes(base_url);
+      const recipes = await getAllRecipes(base_url, params);
 
-      return response.render('private/recipes/index', { recipes });
+      const pagination = {
+        page,
+        total: Math.ceil(recipes[0].total / limit),
+      };
+
+      return response.render('private/recipes/index', { recipes, pagination, filter });
     } catch (err) {
       console.log(err);
 

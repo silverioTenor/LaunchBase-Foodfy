@@ -26,11 +26,28 @@ class HomeController {
 
   async recipes(request, response) {
     try {
+      let { page, limit, filter } = request.query;
+
+      page = page || 1;
+      limit = limit || 6;
+      let offset = limit * (page - 1);
+
+      const params = {
+        filter,
+        limit,
+        offset,
+      };
+
       const base_url = `${request.protocol}://${request.headers.host}`;
 
-      const recipes = await getAllRecipes(base_url);
+      const recipes = await getAllRecipes(base_url, params);
 
-      return response.render('public/recipes/index', { recipes });
+      const pagination = {
+        page,
+        total: Math.ceil(recipes[0].total / limit),
+      };
+
+      return response.render('public/recipes/index', { recipes, pagination, filter });
     } catch (err) {
       console.log(err);
 
@@ -70,11 +87,28 @@ class HomeController {
 
   async chefs(request, response) {
     try {
+      let { page, limit, filter } = request.query;
+
+      page = page || 1;
+      limit = limit || 9;
+      let offset = limit * (page - 1);
+
+      const params = {
+        filter,
+        limit,
+        offset,
+      };
+
       const base_url = `${request.protocol}://${request.headers.host}`;
 
-      const chefs = await getAllChefs(base_url);
+      const chefs = await getAllChefs(base_url, params);
 
-      return response.render('public/chefs/index', { chefs });
+      const pagination = {
+        page,
+        total: Math.ceil(chefs[0].total / limit),
+      };
+
+      return response.render('public/chefs/index', { chefs, pagination, filter });
     } catch (err) {
       console.log(err);
 

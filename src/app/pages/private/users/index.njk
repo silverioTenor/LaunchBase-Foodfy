@@ -28,7 +28,10 @@
             <button class="btn-no-background">
               <a href="/admin/users/update/{{ user.id }}">Editar</a>
             </button>
-            <button class="btn-no-background confirm-remove" onclick="ModalDelete.active()">Remover</button>
+            <button 
+              class="btn-no-background confirm-remove" 
+              onclick="ModalDelete.active()"
+            >Remover</button>
           </div>
 
           {{ delete.modal('/admin/users', user) }}
@@ -37,6 +40,15 @@
       {% endfor %}
 
     </div>
+
+    {% if pagination.total > 1 %}
+      <div 
+        class="pagination" 
+        data-page="{{ pagination.page }}"
+        data-total="{{ pagination.total }}"
+        data-filter="{{ filter }}"
+      ></div>
+    {% endif %}
   </section>
 
 {% endblock content %}

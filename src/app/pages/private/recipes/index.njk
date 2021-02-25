@@ -7,14 +7,18 @@
 {% endblock subTitle %}
 
 {% block filter %}
-  {{ search.area('/admin/recipes', 'Buscar pelo nome') }}
+  {{ search.area('/admin/recipes', filter, 'Buscar pelo nome') }}
 {% endblock filter %}
 
 {% block content %}
 
   <section class="admin-container">
     <div class="header-section">
-      <h1>Gerenciar receitas</h1>
+      {% if filter == null %}
+        <h1>Gerenciar receitas</h1>
+      {% else %}
+        <h1>Buscando por: {{ filter }}</h1>
+      {% endif %}
 
       <a href="/admin/recipes/create">
         <button>Adicionar</button>
@@ -29,8 +33,7 @@
 
           <div class="card-recipe-content">
             <strong>{{ recipe.title }}</strong>
-            <span>por
-              {{ recipe.chef_name }}</span>
+            <span>por {{ recipe.chef_name }}</span>
 
             <button>
               <a href="/admin/recipes/show/{{ recipe.id }}">Visualizar</a>
@@ -40,6 +43,15 @@
       {% endfor %}
 
     </div>
+
+    {% if pagination.total > 1 %}
+      <div 
+        class="pagination" 
+        data-page="{{ pagination.page }}" 
+        data-total="{{ pagination.total }}" 
+        data-filter="{{ filter }}"
+      ></div>
+    {% endif %}
   </section>
 
 {% endblock content %}
