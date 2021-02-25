@@ -22,7 +22,7 @@ class UserValidator {
       const hasUser = await user.findOne({ where: { email } });
 
       if (hasUser) return response.render('private/users/create', {
-        user: body,
+        user: request.body,
         toast: {
           status: 'error',
           message: 'Email já cadastrado!'
@@ -42,7 +42,7 @@ class UserValidator {
       console.log(err);
 
       return response.render('private/users/create', {
-        user: body,
+        user: request.body,
         toast: {
           status: 'error',
           message: 'Erro inexperado! Tente novamente mais tarde.'

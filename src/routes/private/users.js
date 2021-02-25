@@ -4,14 +4,18 @@ const adminRoutes = Router();
 
 const ProfileController = require('../../app/controllers/ProfileController');
 const UserController = require('../../app/controllers/UserController');
+
+const ProfileValidator = require('../../app/validators/ProfileValidator');
 const UserValidator = require('../../app/validators/UserValidator');
 
 const profileController = new ProfileController();
 const userController = new UserController();
+
+const profileValidator = new ProfileValidator();
 const userValidator = new UserValidator();
 
 adminRoutes.get('/profile/:id', profileController.profile);
-// adminRoutes.put('/profile/:id', profileController.put);
+adminRoutes.put('/profile/', profileValidator.put, profileController.put);
 
 adminRoutes.get('/users/', userController.index);
 adminRoutes.get('/users/create/', userController.create);
