@@ -37,10 +37,10 @@ class ChefController {
       const { path } = request.avatar;
 
       const chefDB = new Chef();
-      const chefID = await chefDB.save({ name });
+      const chef_id = await chefDB.save({ name });
 
       const createFiles = new CreateFilesService();
-      await createFiles.execute({ chef_id: chefID }, path);
+      await createFiles.execute({ chef_id }, path);
 
       return response.render('private/chefs/index', {
         toast: {
@@ -124,10 +124,15 @@ class ChefController {
           oldImages: [chef.image]
         });
 
-        const path = [...unRemovedFiles, ...avatar];
+        const newPath = [...unRemovedFiles, ...avatar];
+
+        const path = newPath.filter(p => p !== undefined);
 
         const filesDB = new File();
-        await filesDB.update([path, chef.fm_id]);
+        await filesDB.update({
+          id: chef.fm_id,
+          column: 'files_manager_id'
+        }, { path });
       }
 
       return response.render('private/chefs/index', {
