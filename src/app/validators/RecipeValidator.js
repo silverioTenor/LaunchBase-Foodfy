@@ -36,9 +36,31 @@ class RecipeValidator {
     try {
       const toast = baseValidator.verify(request.body);
 
-      if (toast) return response.render('private/recipes/update', { toast });
+      if (toast) return response.render('private/recipes/update', {
+        chef: request.body,
+        toast
+      });
 
-      // code
+      let { removedPhotos } = request.body;
+
+      if (request.files.length <= 0 && removedPhotos !== '') {
+
+        removedPhotos = removedPhotos.split(',');
+        const lastIndex = removedPhotos.length - 1;
+
+        removedPhotos.splice(lastIndex, 1);
+
+        if (removedPhotos.length === 5) return response.render('private/recipes/update', {
+          chef: request.body,
+          toast: {
+            status: 'error',
+            message: 'Envie pelo menos uma imagem!',
+          }
+        });
+      }
+
+      const newImages = request.files.map(file => file.path);
+      request.images = { newImages };
 
       next();
     } catch (err) {

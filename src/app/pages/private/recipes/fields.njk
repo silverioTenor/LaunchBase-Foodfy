@@ -34,7 +34,7 @@
       <select name="chef_id" id="chef">
         <option class="select-option" value="">Selecione um chef</option>
         {% for chef in chefs %}
-          <option value="{{ chef.id }}">{{ chef.name }}</option>
+          <option value="{{ chef.id }}" {% if chef.id === recipe.chef_id %} }="}" selected="selected" {% endif %}>{{ chef.name }}</option>
         {% endfor %}
       </select>
     </div>

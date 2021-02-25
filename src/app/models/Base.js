@@ -87,7 +87,7 @@ class Base {
       let lines = [],
         values = [];
 
-      Object.keys(fields).map((key) => {
+      Object.keys(fields).map((key, index) => {
         const line = `${key} = $${++index}`;
         lines.push(line);
         values.push(fields[key]);

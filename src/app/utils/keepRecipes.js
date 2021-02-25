@@ -43,11 +43,12 @@ module.exports = {
       };
 
       const getFiles = new GetFilesService();
-      const { images } = await getFiles.execute(values, base_url);
+      const { fm_id, images } = await getFiles.execute(values, base_url);
 
       const newRecipe = {
         ...recipe,
-        image: images
+        image: images,
+        fm_id,
       };
 
       return newRecipe;

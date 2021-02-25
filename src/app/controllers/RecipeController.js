@@ -1,6 +1,8 @@
 const Recipe = require('../models/Recipe');
+const File = require('../models/File');
 
 const CreateFilesService = require('../services/CreateFiles.service');
+const RemoveFilesService = require('../services/RemoveFiles.service');
 
 const { getAllRecipes, getOneRecipe } = require('../utils/keepRecipes');
 
@@ -45,7 +47,13 @@ class RecipeController {
 
   async post(request, response) {
     try {
-      const { chef_id, title, ingredients, steps: preparation, description } = request.body;
+      const {
+        chef_id,
+        title,
+        ingredients,
+        steps: preparation,
+        description
+      } = request.body;
 
       const user_id = request.session.user.userID;
 
@@ -115,6 +123,65 @@ class RecipeController {
       const chefs = await recipeDB.findChefs();
 
       return response.render('private/recipes/update', { recipe, chefs });
+    } catch (err) {
+      console.log(err);
+
+      return response.render('private/recipes/index', {
+        toast: {
+          status: 'error',
+          message: 'Sistema indisponível no momento!'
+        }
+      });
+    }
+  }
+
+  async put(request, response) {
+    try {
+      const {
+        id,
+        chef_id,
+        title,
+        ingredients,
+        steps: preparation,
+        description,
+        removedPhotos,
+      } = request.body;
+
+      const { newImages } = request.images;
+
+      const recipeDB = new Recipe();
+      await recipeDB.update({ id, column: 'id' }, {
+        chef_id,
+        title,
+        ingredients,
+        preparation,
+        description,
+      });
+
+      const recipe = await getOneRecipe('', id);
+
+      const removeFiles = new RemoveFilesService();
+      const unRemovedFiles = await removeFiles.execute({
+        removedPhotos,
+        oldImages: recipe.image
+      });
+
+      const newPath = [...unRemovedFiles, ...newImages];
+
+      const path = newPath.filter(p => p !== undefined);
+
+      const filesDB = new File();
+      await filesDB.update({
+        id: recipe.fm_id,
+        column: 'files_manager_id'
+      }, { path });
+
+      return response.render('private/recipes/index', {
+        toast: {
+          status: 'success',
+          message: 'Receita atualizada com sucesso!',
+        }
+      });
     } catch (err) {
       console.log(err);
 
