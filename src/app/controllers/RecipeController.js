@@ -193,6 +193,42 @@ class RecipeController {
       });
     }
   }
+
+  async delete(request, response) {
+    try {
+      const { id } = request.body;
+
+      const recipe = await getOneRecipe('', id);
+
+      const idList = recipe.image.map(img => img.id);
+      const removedPhotos = [...idList, ''].join(',');
+
+      const removeFiles = new RemoveFilesService();
+      await removeFiles.execute({
+        removedPhotos,
+        oldImages: recipe.image,
+      });
+
+      const recipeDB = new Recipe();
+      await recipeDB.delete(id);
+
+      return response.render('private/recipes/index', {
+        toast: {
+          status: 'success',
+          message: 'Receita removida com sucesso!',
+        }
+      });
+    } catch (err) {
+      console.log(err);
+
+      return response.render('private/recipes/index', {
+        toast: {
+          status: 'error',
+          message: 'Sistema indisponível no momento!',
+        }
+      });
+    }
+  }
 };
 
 module.exports = RecipeController;
