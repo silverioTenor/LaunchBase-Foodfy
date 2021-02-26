@@ -27,7 +27,12 @@ class SessionController {
 
       request.session.user = user;
 
-      return response.redirect(`/admin/profile/${user.userID}`);
+      return response.render(`private/users/profile`, {
+        toast: {
+          status: 'success',
+          message: `Bem vindo(a) ${user.name.split(' ')[0]}!`,
+        }
+      });
     } catch (err) {
       console.log(err);
 
@@ -41,8 +46,16 @@ class SessionController {
   }
 
   logout(request, response) {
+    const user = request.session.user;
+
     request.session.destroy();
-    return response.redirect('/session/login');
+
+    return response.render('session/login', {
+      toast: {
+        status: 'success',
+        message: `Até mais, ${user.name.split(' ')[0]}!`,
+      }
+    });
   }
 
   forgotForm(request, response) {

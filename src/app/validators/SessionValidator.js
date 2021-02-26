@@ -41,7 +41,7 @@ class SessionValidator {
       request.user = {
         userID: user.id,
         isAdmin: user.is_admin,
-        email: user.email,
+        name: user.name,
       };
 
       next();
