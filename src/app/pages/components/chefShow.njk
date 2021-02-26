@@ -1,11 +1,10 @@
-{% macro chef(hasButton, link, chef, recipes) %}
+{% macro chef(hasButton, link, chef, recipes, session) %}
 
   <section class="chef-container-show">
     <div class="header-section">
-      <h1>Chef:
-        {{ chef.name }}</h1>
+      <h1>Chef: {{ chef.name }}</h1>
 
-      {% if hasButton %}
+      {% if hasButton and session.user.isAdmin %}
         <a href="/admin/chefs/update/{{ chef.id }}">
           <button>Editar</button>
         </a>
@@ -36,11 +35,10 @@
 
           <div class="card-recipe-content">
             <strong>{{ recipe.title }}</strong>
-            <span>por
-              {{ recipe.chef_name }}</span>
+            <span>por {{ recipe.chef_name }}</span>
 
             <button>
-              <a href="{{ link }}/recipes/show/{{ chef.id }}">Visualizar</a>
+              <a href="{{ link }}/recipes/show/{{ recipe.id }}">Visualizar</a>
             </button>
           </div>
         </div>

@@ -131,10 +131,15 @@ class RecipeController {
   async update(request, response) {
     try {
       const { id } = request.params;
+      const { user } = request.session;
 
       const base_url = `${request.protocol}://${request.headers.host}`;
 
       const recipe = await getOneRecipe(base_url, id);
+
+      if (recipe.user_id !== user.userID && !user.isAdmin) {
+        return response.redirect(`/admin/profile/${user.userID}`);
+      }
 
       const recipeDB = new Recipe();
       const chefs = await recipeDB.findChefs();

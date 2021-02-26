@@ -7,16 +7,17 @@
 <div class="container-global">
   <header class="header-navigation dark">
     <div class="header-navigation-into">
-      <a 
-        href="{{ '/admin/profile/'+session.user.userID if session.user else '/admin/' }}" class="logoImg"
-      >
+      <a href="{{ '/admin/profile/'+session.user.userID if session.user else '/admin/' }}" class="logoImg">
         <img src="/img/system/logo_white.png" alt="logo"/>
       </a>
 
       <nav class="nav-menu">
         <a href="/admin/recipes">Receitas</a>
         <a href="/admin/chefs">Chefs</a>
-        <a href="/admin/users">Usuários</a>
+
+        {% if session.user.isAdmin %}
+          <a href="/admin/users">Usuários</a>
+        {% endif %}
       </nav>
 
       {% block filter %}{% endblock filter %}

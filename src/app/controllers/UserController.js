@@ -7,8 +7,14 @@ class UserController {
 
   async index(request, response) {
     try {
+      const { userID } = request.session.user;
+
       const userDB = new User();
-      const users = await userDB.find();
+      const users = (await userDB.find()).filter(user => {
+        if (user.is_admin !== true && user.id !== userID) {
+          return user;
+        }
+      });
 
       return response.render('private/users/index', { users });
     } catch (err) {

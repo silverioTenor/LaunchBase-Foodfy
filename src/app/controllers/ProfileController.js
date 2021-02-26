@@ -5,9 +5,12 @@ class ProfileController {
   async profile(request, response) {
     try {
       const { id } = request.params;
+      const { userID } = request.session.user;
 
       const userDB = new User();
       const user = await userDB.findOne({ where: { id } });
+
+      if (user.id !== userID) return response.redirect(`/admin/profile/${userID}`);
 
       user.firstName = user.name.split(' ')[0];
 

@@ -20,9 +20,11 @@
         <h1>Buscando por: {{ filter }}</h1>
       {% endif %}
 
-      <a href="/admin/chefs/create">
-        <button>Cadastrar</button>
-      </a>
+      {% if session.user.isAdmin %}
+        <a href="/admin/chefs/create">
+          <button>Cadastrar</button>
+        </a>
+      {% endif %}
     </div>
 
     {{ list.chefs('/admin/chefs/show', chefs) }}

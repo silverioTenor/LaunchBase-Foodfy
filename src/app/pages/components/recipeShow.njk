@@ -1,10 +1,10 @@
-{% macro recipeShow(recipe, hasButton, hasToggle) %}
+{% macro recipeShow(recipe, session, hasButton, hasToggle) %}
 
   <section class="recipes-container bottom">
     <div class="header-section">
       <h2>Receita: {{ recipe.title }}</h2>
 
-      {% if hasButton %}
+      {% if hasButton and session.user.userID === recipe.user_id or session.user.isAdmin %}
         <a href="/admin/recipes/update/{{ recipe.id }}">
           <button>Editar receita</button>
         </a>
