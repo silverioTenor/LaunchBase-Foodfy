@@ -122,3 +122,7 @@ ADD CONSTRAINT files_files_manager_id_fkey
 FOREIGN KEY ("files_manager_id")
 REFERENCES "files_manager" ("id")
 ON DELETE CASCADE;
+
+-- RESET SEQUENCE
+
+ALTER SEQUENCE chefs_id_seq RESTART WITH 1;
