@@ -5,6 +5,7 @@ Este sistema foi desenvolvido como desafio final do bootcamp LaunchBase, da [Roc
 Para Rodar este sistema é necessário executar alguns passos...
 
 - Faça o clone do projeto para o seu computador.
+- digite em seu terminal `yarn` para baixar todas as dependências necessárias.
 
 - Crie um banco de dados com as seguintes configurações:
   ```js
