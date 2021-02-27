@@ -13,5 +13,13 @@ module.exports = {
     }
 
     next();
+  },
+
+  isLogged(request, response, next) {
+    if (request.session?.user?.userID) {
+      return response.redirect(`/admin/profile/${request.session.user.userID}`);
+    }
+
+    next();
   }
 }

@@ -47,7 +47,7 @@ class ProfileController {
         user,
         toast: {
           status: 'success',
-          message: 'Usuário atualizado com sucesso!'
+          message: 'Dados atualizados com sucesso!'
         }
       });
     } catch (err) {

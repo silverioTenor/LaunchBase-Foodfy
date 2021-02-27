@@ -28,6 +28,10 @@ class SessionController {
       request.session.user = user;
 
       return response.render(`private/users/profile`, {
+        user: {
+          ...user,
+          firstName: user.name.split(' ')[0]
+        },
         toast: {
           status: 'success',
           message: `Bem vindo(a) ${user.name.split(' ')[0]}!`,

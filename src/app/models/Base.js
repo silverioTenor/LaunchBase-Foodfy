@@ -6,11 +6,21 @@ class Base {
     this.table = this;
   }
 
-  async find() {
+  async find(params) {
     try {
-      let sql = `SELECT * FROM ${this.table}`;
+      const { limit, offset } = params;
 
-      const results = await db.query(sql);
+      const totalQuery = `(
+        SELECT COUNT(*) FROM ${this.table}
+      ) AS total`;
+
+      const sql = `
+        SELECT *, ${totalQuery} FROM ${this.table} 
+        ORDER BY ${this.table}.updated_at
+        LIMIT $1 OFFSET $2
+      `;
+
+      const results = await db.query(sql, [limit, offset]);
 
       if (results.rows.length <= 0) {
         throw new Error(`${this.table} not found!`);

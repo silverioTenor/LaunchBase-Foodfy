@@ -14,7 +14,7 @@ class ChefController {
       let { page, limit, filter } = request.query;
 
       page = page || 1;
-      limit = limit || 9;
+      limit = limit || 12;
       let offset = limit * (page - 1);
 
       const params = {
@@ -87,7 +87,12 @@ class ChefController {
 
       const chef = await getOneChef(base_url, id);
 
-      const recipes = (await getAllRecipes(base_url)).filter(recipe => {
+      const params = {
+        limit: 20,
+        offset: null,
+      };
+
+      const recipes = (await getAllRecipes(base_url, params)).filter(recipe => {
         return recipe.chef_id === id ? recipe : false;
       });
 

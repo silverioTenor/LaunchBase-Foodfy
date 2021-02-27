@@ -11,7 +11,7 @@ module.exports = {
       if (params?.filter) {
         chefs = await chefDB.search(params);
       } else {
-        chefs = await chefDB.find();
+        chefs = await chefDB.find(params);
       }
 
       const chefsWithImagesPromise = chefs.map(async chef => {

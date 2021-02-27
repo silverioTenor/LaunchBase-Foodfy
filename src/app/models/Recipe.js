@@ -24,15 +24,22 @@ class Recipe extends Base {
     }
   }
 
-  async findRecipesWithChef() {
+  async findRecipesWithChef(params) {
     try {
+      const { limit, offset } = params;
+
+      const totalQuery = `(
+        SELECT COUNT(*) FROM recipes
+      ) AS total`;
+
       let sql = `
-        SELECT chefs.name AS chef_name, recipes.* FROM ${this.table}
+        SELECT chefs.name AS chef_name, recipes.*, ${totalQuery} FROM ${this.table}
         LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
         ORDER BY recipes.updated_at DESC
+        LIMIT $1 OFFSET $2
       `;
 
-      const results = await db.query(sql);
+      const results = await db.query(sql, [limit, offset]);
 
       if (results.rows.length <= 0) {
         throw new Error(`${this.table} not found!`);

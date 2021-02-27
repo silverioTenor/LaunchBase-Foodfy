@@ -1,3 +1,5 @@
+const { compare } = require('bcryptjs');
+
 const User = require('../models/User');
 
 const BaseValidator = require('./BaseValidator');
@@ -66,7 +68,9 @@ class UserValidator {
 
       const user = await userDB.findByID(id);
 
-      if (user.password !== password) return response.render('private/users/update', {
+      const passwordChecked = await compare(password, user.password);
+
+      if (!passwordChecked) return response.render('private/users/update', {
         user: request.body,
         toast: {
           status: 'error',

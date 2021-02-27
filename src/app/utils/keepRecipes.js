@@ -11,7 +11,7 @@ module.exports = {
       if (params?.filter) {
         recipes = await recipeDB.search(params);
       } else {
-        recipes = await recipeDB.findRecipesWithChef();
+        recipes = await recipeDB.findRecipesWithChef(params);
       }
 
       const recipesWithImagesPromise = recipes.map(async recipe => {

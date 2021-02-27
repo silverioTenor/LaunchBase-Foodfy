@@ -46,7 +46,7 @@ const Pagination = {
         const element = document.createElement('a');
 
         if (filter) {
-          element.setAttribute('href', `?page=${page}&filter${filter}`);
+          element.setAttribute('href', `?page=${page}&filter=${filter}`);
         } else {
           element.setAttribute('href', `?page=${page}`);
         }

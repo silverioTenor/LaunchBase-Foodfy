@@ -42,6 +42,7 @@ class SessionValidator {
         userID: user.id,
         isAdmin: user.is_admin,
         name: user.name,
+        email: user.email,
       };
 
       next();
